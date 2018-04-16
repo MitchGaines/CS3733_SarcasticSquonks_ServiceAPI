@@ -2,14 +2,18 @@ apply plugin: 'java'
 apply plugin: 'idea'
 apply plugin: 'application'
 
-mainClassName = "edu.wpi.cs3733d18.teamS.controller.Main"
+mainClassName = "edu.wpi.cs3733d18.teamS.Main"
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 version = '1.0'
 
 repositories {
+
     mavenCentral()
+    flatDir {
+        dirs 'lib'
+    }
 }
 
 // You'll need to create an integration-test folder with the same structure as your test or main folders
@@ -23,12 +27,10 @@ sourceSets {
         resources.srcDir file('src/integration-test/resources')
     }
 }
-
 configurations {
     integrationTestCompile.extendsFrom testCompile
     integrationTestRuntime.extendsFrom testRuntime
 }
-
 // This will be the name of the task that you'll run to do only your integration tests
 task integrationTest(type: Test) {
     testClassesDir = sourceSets.integrationTest.output.classesDir
@@ -76,3 +78,6 @@ jar {
     from configurations.runtime.collect { zipTree(it) }
 }
 
+task listJars << {
+    configurations.compile.each { File file -> println file.name }
+}
