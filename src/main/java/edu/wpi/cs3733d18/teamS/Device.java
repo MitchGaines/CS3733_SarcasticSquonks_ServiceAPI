@@ -1,5 +1,7 @@
 package edu.wpi.cs3733d18.teamS;
 
+import java.util.List;
+
 public class Device {
 
     /**
@@ -27,6 +29,27 @@ public class Device {
         this.device_name = device_name;
         this.owner = owner;
         this.device_type = device_type;
+    }
+
+    /**
+     * Generates a dummy list of devices
+     */
+    public static void generateDummyDevices() {
+        List<Device> devices = RegisterDeviceController.devices;
+        List<String> usernames = RegisterDeviceController.usernames;
+        List<String> device_types = RegisterDeviceController.device_types;
+
+        devices.add(new Device("Galaxy S6", "Joseph Turcotte", "Smartphone"));
+        usernames.add("Joseph Turcotte");
+        device_types.add("Smartphone");
+
+        devices.add(new Device("Pixel 2", "Danny Sullivan", "Desktop"));
+        usernames.add("Danny Sullivan");
+        device_types.add("Desktop");
+
+        devices.add(new Device("Broken Apple", "Cormac Lynch-Collier", "Laptop"));
+        usernames.add("Cormac Lynch-Collier");
+        device_types.add("Laptop");
     }
 
     public String getDeviceName() {

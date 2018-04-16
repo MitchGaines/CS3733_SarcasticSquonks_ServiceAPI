@@ -50,14 +50,17 @@ public class ServiceRequest {
      * Generates a dummy list of requests to populate the log
      */
     public static void generateDummyRequests() {
-        List<ServiceRequest> requests = ServiceHomeController.requests;
+        List<ServiceRequest> requests = ServiceRequestController.requests;
 
         requests.add(new ServiceRequest(1, "Joe Turcotte", "Matt Puentes",
                 "My computer broke!", "3rd Hallway"));
+        ServiceRequestController.ticket_id++;
         requests.add(new ServiceRequest(2, "Joe Turcotte", "Mitch Gaines",
                 "My computer broke again!", "3rd Hallway"));
+        ServiceRequestController.ticket_id++;
         requests.add(new ServiceRequest(3, "Joe Turcotte", "Cormac Lynch-Collier",
                 "Can't connect to Wifi!", "3rd Hallway"));
+        ServiceRequestController.ticket_id++;
     }
 
     public long getID() {

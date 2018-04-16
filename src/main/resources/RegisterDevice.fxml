@@ -22,7 +22,7 @@
         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
     </rowConstraints>
     <children>
-        <ComboBox fx:id="names_list" onMouseClicked="#populateNamesBox" prefWidth="150.0" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+        <ComboBox fx:id="names_selector" onMouseClicked="#populateNamesBox" prefWidth="150.0" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Give a name to the device you want to register." GridPane.halignment="RIGHT" GridPane.rowIndex="1">
             <GridPane.margin>
                 <Insets right="10.0" />
@@ -38,14 +38,14 @@
                 <Insets right="10.0" />
             </GridPane.margin>
         </Text>
-        <Button fx:id="submit_btn" mnemonicParsing="false" onMouseClicked="#submitRequest" text="\%renameDevice" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
+        <Button fx:id="create_device_btn" mnemonicParsing="false" onMouseClicked="#createDevice" text="\%createDevice" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
         <Button fx:id="back_btn" mnemonicParsing="false" onMouseClicked="#onBackClick" text="\%Back" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.valignment="TOP">
             <GridPane.margin>
                 <Insets right="20.0" />
             </GridPane.margin>
         </Button>
       <TextField fx:id="device_name" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-      <ComboBox fx:id="types_list" onMouseClicked="#populateTypesBox" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+      <ComboBox fx:id="types_selector" onMouseClicked="#populateTypesBox" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
     </children>
     <padding>
         <Insets top="40.0" />

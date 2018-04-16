@@ -42,60 +42,6 @@ import java.util.stream.Stream;
 
 public class ServiceHomeController {
 
-    /**
-     * Ticket number id
-     */
-    public static int ticket_id = 1;
-
-    /**
-     * Holds a list of all computer service requests
-     */
-    public static List<ServiceRequest> requests = new ArrayList<>();
-
-//    @FXML
-//    JFXButton pathfind;
-//
-//    @FXML
-//    JFXButton login_btn;
-//
-//    @FXML
-//    TextField username;
-//
-//    @FXML
-//    PasswordField password;
-//
-//    @FXML
-//    Label wrong_credentials;
-//
-//    @FXML
-//    Label time, time2;
-//
-//    @FXML
-//    BorderPane main_pane;
-//
-//    @FXML
-//    JFXComboBox<edu.wpi.cs3733d18.teamS.data.Node> combobox_start;
-//
-//    @FXML
-//    JFXComboBox<edu.wpi.cs3733d18.teamS.data.Node> combobox_end;
-//
-//    @FXML
-//    JFXComboBox language_selector;
-//
-//    @FXML
-//    StackPane stack_pane;
-//
-//    @FXML
-//    ExpansionPanel exp_panel;
-//    @FXML
-//    JFXButton REST;
-//    @FXML
-//    JFXButton DEPT;
-//    @FXML
-//    JFXButton INFO;
-//    @FXML
-//    JFXToggleButton stairs_toggle;
-
     @FXML
     private TableView log_table;
 
@@ -156,7 +102,7 @@ public class ServiceHomeController {
             return p;
         });
 
-        log_table.setItems(FXCollections.observableArrayList(requests));
+        log_table.setItems(FXCollections.observableArrayList(ServiceRequestController.requests));
     }
 
 //    public void onLanguageChange() {
