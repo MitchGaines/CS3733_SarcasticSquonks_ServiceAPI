@@ -79,7 +79,12 @@
                       <TableColumn prefWidth="75.0" text="C2" />
                     </columns>
                   </TableView>
-                  <Button fx:id="create_request_btn" mnemonicParsing="false" onMouseClicked="#onRequestClick" text="\%createComputerServiceRequest" />
+                  <HBox alignment="TOP_CENTER" prefHeight="50.0" prefWidth="200.0" spacing="40.0">
+                     <children>
+                        <Button fx:id="register_device_btn" mnemonicParsing="false" onMouseClicked="#onRegisterClick" text="\%registerDevice" />
+                        <Button fx:id="create_request_btn" mnemonicParsing="false" onMouseClicked="#onRequestClick" text="\%createComputerServiceRequest" />
+                     </children>
+                  </HBox>
                     </children>
                     <StackPane.margin>
                         <Insets top="40.0" />

@@ -42,6 +42,8 @@ public class Main extends Application {
 
         this.primary_stage = primary_stage;
 
+        ServiceRequest.generateDummyRequests();
+
         Parent root = FXMLLoader.load(getClass().getResource("/ServiceHomePage.fxml"), AllText.getBundle());
         primary_stage.setTitle("Brigham and Women's");
 

@@ -37,30 +37,35 @@ public class ServiceRequestController {
 //    private UserController parent;
 
     @FXML
+    private ComboBox<Device> computer_list;
+
+    @FXML
+    private ComboBox problem_list;
+
+    @FXML
+    private TextField additional_info;
+
+    @FXML
+    private Button submit_btn;
+
+    @FXML
     private Button back_btn;
 
-    public void populateRequestTypes() {
+    public void populateDevicesBox() {
 
     }
 
-    public void populateRequestsBox() {
-
-    }
-
-    public void markComplete() {
+    public void populateProblemsBox() {
 
     }
 
     public void submitRequest() {
-
-    }
-
-    public void loadRequestInfo() {
-
+        System.out.println("request submitted!");
     }
 
     public void initialize() {
-
+        populateDevicesBox();
+        populateProblemsBox();
     }
 
     @FXML
