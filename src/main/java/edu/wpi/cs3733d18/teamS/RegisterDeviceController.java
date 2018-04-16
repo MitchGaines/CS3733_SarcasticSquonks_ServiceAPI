@@ -1,19 +1,12 @@
 package edu.wpi.cs3733d18.teamS;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
-import javafx.scene.input.KeyCode;
+import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.text.Text;
-import javafx.util.StringConverter;
 
-import java.util.Comparator;
-import java.util.stream.Stream;
-
-public class ServiceRequestController {
-
+public class RegisterDeviceController {
 //    @FXML
 //    ComboBox<ServiceType> request_type_selector;
 //
@@ -51,11 +44,11 @@ public class ServiceRequestController {
     @FXML
     private Button back_btn;
 
-    public void populateDevicesBox() {
+    public void populateNamesBox() {
 
     }
 
-    public void populateProblemsBox() {
+    public void populateTypesBox() {
 
     }
 
@@ -64,8 +57,8 @@ public class ServiceRequestController {
     }
 
     public void initialize() {
-        populateDevicesBox();
-        populateProblemsBox();
+        populateNamesBox();
+        populateTypesBox();
     }
 
     @FXML
@@ -77,5 +70,4 @@ public class ServiceRequestController {
     void onKeyReleasedComboBox(KeyEvent e) {
 
     }
-
 }

@@ -30,6 +30,8 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.stream.Stream;
 
 /**
@@ -39,6 +41,16 @@ import java.util.stream.Stream;
  */
 
 public class ServiceHomeController {
+
+    /**
+     * Ticket number id
+     */
+    public static int ticket_id = 1;
+
+    /**
+     * Holds a list of all computer service requests
+     */
+    public static List<ServiceRequest> requests = new ArrayList<>();
 
 //    @FXML
 //    JFXButton pathfind;
@@ -90,6 +102,9 @@ public class ServiceHomeController {
     @FXML
     private Button create_request_btn;
 
+    @FXML
+    private Button register_device_btn;
+
     /**
      * Initialize the home page controller for the service API
      */
@@ -97,11 +112,11 @@ public class ServiceHomeController {
 
         log_table.getColumns().removeAll(log_table.getColumns());
 
-        TableColumn<ServiceLogEntry, String> numberCol = new TableColumn("Ticket Number");
-        TableColumn<ServiceLogEntry, String> requesterCol = new TableColumn("Requester");
-        TableColumn<ServiceLogEntry, String> fulfillerCol = new TableColumn("Fulfiller");
-        TableColumn<ServiceLogEntry, String> descriptionCol = new TableColumn("Description");
-        TableColumn<ServiceLogEntry, String> locationCol = new TableColumn("Location");
+        TableColumn<ServiceRequest, String> numberCol = new TableColumn("Ticket Number");
+        TableColumn<ServiceRequest, String> requesterCol = new TableColumn("Requester");
+        TableColumn<ServiceRequest, String> fulfillerCol = new TableColumn("Fulfiller");
+        TableColumn<ServiceRequest, String> descriptionCol = new TableColumn("Description");
+        TableColumn<ServiceRequest, String> locationCol = new TableColumn("Location");
 
         numberCol.prefWidthProperty().bind(log_table.widthProperty().multiply(0.2));
         requesterCol.prefWidthProperty().bind(log_table.widthProperty().multiply(0.2));
@@ -111,6 +126,37 @@ public class ServiceHomeController {
 
         log_table.getColumns().addAll(numberCol, requesterCol, fulfillerCol, descriptionCol, locationCol);
 
+        numberCol.setCellValueFactory(e -> {
+            SimpleStringProperty p = new SimpleStringProperty();
+            p.set(String.valueOf(e.getValue().getID()));
+            return p;
+        });
+
+        requesterCol.setCellValueFactory(e -> {
+            SimpleStringProperty p = new SimpleStringProperty();
+            p.set(e.getValue().getRequesterName());
+            return p;
+        });
+
+        fulfillerCol.setCellValueFactory(e -> {
+            SimpleStringProperty p = new SimpleStringProperty();
+            p.set(e.getValue().getFulfillerName());
+            return p;
+        });
+
+        descriptionCol.setCellValueFactory(e -> {
+            SimpleStringProperty p = new SimpleStringProperty();
+            p.set(e.getValue().getDescription());
+            return p;
+        });
+
+        locationCol.setCellValueFactory(e -> {
+            SimpleStringProperty p = new SimpleStringProperty();
+            p.set(e.getValue().getLocation());
+            return p;
+        });
+
+        log_table.setItems(FXCollections.observableArrayList(requests));
     }
 
 //    public void onLanguageChange() {
@@ -120,6 +166,11 @@ public class ServiceHomeController {
     @FXML
     void onRequestClick() {
         Main.switchScenes("Service request", "/ServiceRequest.fxml");
+    }
+
+    @FXML
+    void onRegisterClick() {
+        Main.switchScenes("Register device", "/RegisterDevice.fxml");
     }
 
     @FXML

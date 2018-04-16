@@ -22,9 +22,9 @@
       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
     </rowConstraints>
     <children>
-      <ComboBox prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-      <ComboBox prefWidth="150.0" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
-      <TextField maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="150.0" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="3" />
+      <ComboBox fx:id="computer_list" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+      <ComboBox fx:id="problem_list" prefWidth="150.0" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+      <TextField fx:id="additional_info" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="150.0" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="3" />
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Which computer is giving you problems?" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
          <GridPane.margin>
             <Insets right="10.0" />
@@ -40,7 +40,7 @@
             <Insets right="10.0" />
          </GridPane.margin>
       </Text>
-      <Button mnemonicParsing="false" text="\%submitRequest" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
+      <Button fx:id="submit_btn" mnemonicParsing="false" onMouseClicked="#submitRequest" text="\%submitRequest" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
       <Button fx:id="back_btn" mnemonicParsing="false" onMouseClicked="#onBackClick" text="\%Back" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.valignment="TOP">
          <GridPane.margin>
             <Insets right="20.0" />
