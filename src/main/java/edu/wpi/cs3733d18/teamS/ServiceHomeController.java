@@ -5,6 +5,7 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXToggleButton;
 import javafx.beans.binding.Bindings;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -23,99 +24,102 @@ import javafx.stage.Window;
 import javafx.util.StringConverter;
 
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.stream.Stream;
 
+/**
+ * Service API home controller
+ * Author: Joseph Turcotte
+ * Date: April 16, 2018
+ */
+
 public class ServiceHomeController {
 
-    private static boolean include_stairs = true;
-    private static String KIOSK_DEFAULT_LOCATION = "BINFO00102";
-
-    @FXML
-    JFXButton pathfind;
-
-    @FXML
-    JFXButton login_btn;
-
-    @FXML
-    TextField username;
-
-    @FXML
-    PasswordField password;
-
-    @FXML
-    Label wrong_credentials;
-
-    @FXML
-    Label time, time2;
-
-    @FXML
-    BorderPane main_pane;
-
+//    @FXML
+//    JFXButton pathfind;
+//
+//    @FXML
+//    JFXButton login_btn;
+//
+//    @FXML
+//    TextField username;
+//
+//    @FXML
+//    PasswordField password;
+//
+//    @FXML
+//    Label wrong_credentials;
+//
+//    @FXML
+//    Label time, time2;
+//
+//    @FXML
+//    BorderPane main_pane;
+//
 //    @FXML
 //    JFXComboBox<edu.wpi.cs3733d18.teamS.data.Node> combobox_start;
 //
 //    @FXML
 //    JFXComboBox<edu.wpi.cs3733d18.teamS.data.Node> combobox_end;
-
-    @FXML
-    JFXComboBox language_selector;
-
-    @FXML
-    StackPane stack_pane;
-
+//
+//    @FXML
+//    JFXComboBox language_selector;
+//
+//    @FXML
+//    StackPane stack_pane;
+//
 //    @FXML
 //    ExpansionPanel exp_panel;
-    @FXML
-    JFXButton REST;
-    @FXML
-    JFXButton DEPT;
-    @FXML
-    JFXButton INFO;
-    @FXML
-    JFXToggleButton stairs_toggle;
-    //private ObservableList<edu.wpi.cs3733d18.teamS.data.Node> locations = FXCollections.observableArrayList();
+//    @FXML
+//    JFXButton REST;
+//    @FXML
+//    JFXButton DEPT;
+//    @FXML
+//    JFXButton INFO;
+//    @FXML
+//    JFXToggleButton stairs_toggle;
 
-    public static boolean includeStairs() {
-        return include_stairs;
-    }
+    @FXML
+    private TableView log_table;
 
-    public static void setKioskDefaultLocation(String kioskDefaultLocation) {
-        KIOSK_DEFAULT_LOCATION = kioskDefaultLocation;
-    }
+    @FXML
+    private Button create_request_btn;
 
     /**
-     * Performs this function during creation of Controller; sets up the ComboBoxes
-     * by pulling all nodes from the edu.wpi.cs3733d18.teamS.database
-     *
-     * @author Will Lucca
+     * Initialize the home page controller for the service API
      */
     public void initialize() {
 
+        log_table.getColumns().removeAll(log_table.getColumns());
+
+        TableColumn<ServiceLogEntry, String> numberCol = new TableColumn("Ticket Number");
+        TableColumn<ServiceLogEntry, String> requesterCol = new TableColumn("Requester");
+        TableColumn<ServiceLogEntry, String> fulfillerCol = new TableColumn("Fulfiller");
+        TableColumn<ServiceLogEntry, String> descriptionCol = new TableColumn("Description");
+        TableColumn<ServiceLogEntry, String> locationCol = new TableColumn("Location");
+
+        numberCol.prefWidthProperty().bind(log_table.widthProperty().multiply(0.2));
+        requesterCol.prefWidthProperty().bind(log_table.widthProperty().multiply(0.2));
+        fulfillerCol.prefWidthProperty().bind(log_table.widthProperty().multiply(0.2));
+        descriptionCol.prefWidthProperty().bind(log_table.widthProperty().multiply(0.2));
+        locationCol.prefWidthProperty().bind(log_table.widthProperty().multiply(0.2));
+
+        log_table.getColumns().addAll(numberCol, requesterCol, fulfillerCol, descriptionCol, locationCol);
+
     }
 
-    public void onLanguageChange() {
-        if (language_selector.getSelectionModel().isEmpty()) {
-            return;
-        }
-        AllText.changeLanguage(AllText.getLanguages()[language_selector.getSelectionModel().getSelectedIndex()]);
-        Main.switchScenes("Brigham and Women's", "/HomePage.fxml");
+//    public void onLanguageChange() {
+//
+//    }
 
-    }
-
-    /**
-     * Sets start_loc and end_loc to the values selected in the combobox, then switches view to
-     * PathfindPage, initializing PathfindController
-     *
-     * @param event
-     * @throws IOException
-     */
     @FXML
-    void onPathfindClick(ActionEvent event) throws IOException {
-
+    void onRequestClick() {
+        Main.switchScenes("Service request", "/ServiceRequest.fxml");
     }
 
     @FXML
@@ -133,16 +137,4 @@ public class ServiceHomeController {
     void onKeyReleasedComboBox(KeyEvent e) {
 
     }
-
-    //THIS IS A TEST TO TRY OUT DIFFERENT USERS
-    public void onLoginClick(ActionEvent event) throws IOException {
-
-    }
-
-//    //PART OF THE USER TEST
-//    public void openUser(ActionEvent event, String page, User user) throws IOException {
-//        UserController user_controller = (UserController) Main.switchScenes("User", page);
-//        user_controller.setUp(user, page);
-//
-//    } //END OF TEST
 }
