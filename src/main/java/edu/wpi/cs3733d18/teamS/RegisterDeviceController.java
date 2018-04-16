@@ -7,27 +7,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 
 public class RegisterDeviceController {
-//    @FXML
-//    ComboBox<ServiceType> request_type_selector;
-//
-//    @FXML
-//    ComboBox<ServiceRequest> active_requests_box;
-//
-//    @FXML
-//    ComboBox<edu.wpi.cs3733d18.teamS.data.Node> service_location;
-//    @FXML
-//    Button request_service_button;
-//    @FXML
-//    Button mark_completed_btn;
-//    private User user;
-//    private ObservableList<Node> locations = FXCollections.observableArrayList();
-//    @FXML
-//    private Text title_text, location_text;
-//    @FXML
-//    private TextField service_title;
-//    @FXML
-//    private TextArea description_field, description_text;
-//    private UserController parent;
 
     @FXML
     private ComboBox<Device> computer_list;
