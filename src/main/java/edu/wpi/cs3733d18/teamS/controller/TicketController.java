@@ -1,24 +1,18 @@
-package edu.wpi.cs3733d18.teamS;
+package edu.wpi.cs3733d18.teamS.controller;
 
 
+import edu.wpi.cs3733d18.teamS.data.Device;
+import edu.wpi.cs3733d18.teamS.data.Ticket;
+import edu.wpi.cs3733d18.teamS.database.Storage;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
-public class ServiceRequestController {
-
-    /**
-     * Ticket number id
-     */
-    public static int ticket_id = 1;
-
-    /**
-     * Holds a list of all computer service requests
-     */
-    public static List<ServiceRequest> requests = new ArrayList<>();
+public class TicketController {
 
     @FXML
     private ComboBox devices_list;
@@ -37,10 +31,11 @@ public class ServiceRequestController {
 
     public void populateDevicesBox() {
 
-        // loop through devices list and add to names
-        List<String> device_names = new ArrayList<>();
-        for (Device d : RegisterDeviceController.devices) {
-            device_names.add(d.getDeviceName());
+        List<Device> devices = Storage.getInstance().getAllDevices();
+        List<String> device_names = new LinkedList<>();
+        int length = devices.size();
+        for (int i = 0; i < length; i++) {
+            device_names.add(devices.get(i).getDeviceName());
         }
 
         devices_list.valueProperty().set(null);
@@ -53,6 +48,7 @@ public class ServiceRequestController {
         problems.add("Computer won't turn on.");
         problems.add("Computer froze.");
         problems.add("Software issue.");
+        problems.add("Eclipse is terrible!");
 
         problem_list.valueProperty().set(null);
         problem_list.getItems().removeAll(problem_list.getItems());
@@ -60,9 +56,9 @@ public class ServiceRequestController {
     }
 
     public void submitRequest() {
-        // TODO how do we populate this service request? Would need to know who is requesting and fulfilling it
-        ServiceRequest sr = new ServiceRequest(ticket_id++, "Joe", "Joe", additional_info.getText(), "3rd Floor");
-        requests.add(sr);
+        // TODO need to populate service request better (ask where incident took place, etc.)
+        Ticket t = new Ticket("Joe", "Joe", additional_info.getText(), "3rd Floor");
+        Storage.getInstance().saveTicket(t);
 
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Service Request Created");

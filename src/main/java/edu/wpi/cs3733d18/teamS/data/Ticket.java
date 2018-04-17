@@ -1,14 +1,13 @@
-package edu.wpi.cs3733d18.teamS;
+package edu.wpi.cs3733d18.teamS.data;
 
-import javax.xml.ws.Service;
-import java.util.List;
+import edu.wpi.cs3733d18.teamS.database.Storage;
 
 /**
  * ServiceRequest class for computer service requests
  * Author: Joseph Turcotte
  * Date: April 16, 2018
  */
-public class ServiceRequest {
+public class Ticket {
 
     /**
      * id of ticket
@@ -38,8 +37,7 @@ public class ServiceRequest {
      * @param description    description of the request
      * @param location       where the request needs to be fulfilled
      */
-    public ServiceRequest(long id, String requester_name, String fulfiller_name, String description, String location) {
-        this.id = id;
+    public Ticket(String requester_name, String fulfiller_name, String description, String location) {
         this.requester_name = requester_name;
         this.fulfiller_name = fulfiller_name;
         this.description = description;
@@ -49,18 +47,14 @@ public class ServiceRequest {
     /**
      * Generates a dummy list of requests to populate the log
      */
-    public static void generateDummyRequests() {
-        List<ServiceRequest> requests = ServiceRequestController.requests;
-
-        requests.add(new ServiceRequest(1, "Joe Turcotte", "Matt Puentes",
+    public static void generateInitialTickets() {
+        Storage storage = Storage.getInstance();
+        storage.saveTicket(new Ticket("Joe Turcotte", "Matt Puentes",
                 "My computer broke!", "3rd Hallway"));
-        ServiceRequestController.ticket_id++;
-        requests.add(new ServiceRequest(2, "Joe Turcotte", "Mitch Gaines",
+        storage.saveTicket(new Ticket("Joe Turcotte", "Mitch Gaines",
                 "My computer broke again!", "3rd Hallway"));
-        ServiceRequestController.ticket_id++;
-        requests.add(new ServiceRequest(3, "Joe Turcotte", "Cormac Lynch-Collier",
+        storage.saveTicket(new Ticket("Joe Turcotte", "Cormac Lynch-Collier",
                 "Can't connect to Wifi!", "3rd Hallway"));
-        ServiceRequestController.ticket_id++;
     }
 
     public long getID() {
