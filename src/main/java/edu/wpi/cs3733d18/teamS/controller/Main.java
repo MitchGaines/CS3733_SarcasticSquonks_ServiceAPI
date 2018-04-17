@@ -1,5 +1,8 @@
-package edu.wpi.cs3733d18.teamS;
+package edu.wpi.cs3733d18.teamS.controller;
 
+import edu.wpi.cs3733d18.teamS.database.ApacheDatabase;
+import edu.wpi.cs3733d18.teamS.database.Storage;
+import edu.wpi.cs3733d18.teamS.internationalization.AllText;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -40,10 +43,11 @@ public class Main extends Application {
     public void start(Stage primary_stage) throws Exception {
         AllText.changeLanguage("en");
 
-        this.primary_stage = primary_stage;
+        // set database and storage class
+        Storage storage = Storage.getInstance();
+        storage.setDatabase(new ApacheDatabase("serviceDB"));
 
-        ServiceRequest.generateDummyRequests();
-        Device.generateDummyDevices();
+        this.primary_stage = primary_stage;
 
         Parent root = FXMLLoader.load(getClass().getResource("/ServiceHomePage.fxml"), AllText.getBundle());
         primary_stage.setTitle("Brigham and Women's");
@@ -58,8 +62,7 @@ public class Main extends Application {
         primary_stage.show();
 
         // before system shutdown
-        primary_stage.setOnCloseRequest(windowEvent -> {
-
-        });
+//        primary_stage.setOnCloseRequest(windowEvent -> {
+//        });
     }
 }

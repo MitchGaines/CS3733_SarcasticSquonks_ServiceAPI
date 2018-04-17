@@ -1,6 +1,6 @@
-package edu.wpi.cs3733d18.teamS;
+package edu.wpi.cs3733d18.teamS.data;
 
-import java.util.List;
+import edu.wpi.cs3733d18.teamS.database.Storage;
 
 public class Device {
 
@@ -34,22 +34,11 @@ public class Device {
     /**
      * Generates a dummy list of devices
      */
-    public static void generateDummyDevices() {
-        List<Device> devices = RegisterDeviceController.devices;
-        List<String> usernames = RegisterDeviceController.usernames;
-        List<String> device_types = RegisterDeviceController.device_types;
-
-        devices.add(new Device("Galaxy S6", "Joseph Turcotte", "Smartphone"));
-        usernames.add("Joseph Turcotte");
-        device_types.add("Smartphone");
-
-        devices.add(new Device("Pixel 2", "Danny Sullivan", "Desktop"));
-        usernames.add("Danny Sullivan");
-        device_types.add("Desktop");
-
-        devices.add(new Device("Broken Apple", "Cormac Lynch-Collier", "Laptop"));
-        usernames.add("Cormac Lynch-Collier");
-        device_types.add("Laptop");
+    public static void generateInitialDevices() {
+        Storage storage = Storage.getInstance();
+        storage.saveDevice(new Device("Galaxy S6", "Joseph Turcotte", "Smartphone"));
+        storage.saveDevice(new Device("Pixel 2", "Danny Sullivan", "Desktop"));
+        storage.saveDevice(new Device("Broken Apple", "Cormac Lynch-Collier", "Laptop"));
     }
 
     public String getDeviceName() {

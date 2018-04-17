@@ -1,4 +1,4 @@
-package edu.wpi.cs3733d18.teamS;
+package edu.wpi.cs3733d18.teamS.internationalization;
 
 import java.util.Locale;
 import java.util.ResourceBundle;
