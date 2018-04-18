@@ -14,9 +14,7 @@ import java.util.List;
  * Storage.java
  * Class that stores information for the the Apache Database and manages methods related to it.
  * @author Joseph Turcotte
- * @version %I%, %G%
- * Date: March 29, 2018
- * Modified: April 6, 2018
+ * @version 1.3, April 6, 2018
  */
 public class Storage {
 
@@ -38,6 +36,7 @@ public class Storage {
 
     /**
      * Get instance of Storage object.
+     * @return the instance of the storage holder.
      */
     public static Storage getInstance() {
         return StorageHolder.instance;

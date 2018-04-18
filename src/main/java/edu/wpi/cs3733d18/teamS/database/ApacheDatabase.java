@@ -8,7 +8,7 @@ import java.sql.*;
  * ApacheDatabase
  * A class that setups the database and has methods related to it.
  * @author: Joseph Turcotte
- * @version %I%, %G%
+ * @version 1.3, April 6, 2018
  */
 public class ApacheDatabase implements IDatabase {
 
