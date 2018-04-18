@@ -5,8 +5,7 @@ import edu.wpi.cs3733d18.teamS.database.Storage;
 /**
  * ServiceRequest class for computer service requests.
  * @author Joseph Turcotte
- * @version %I%, %G%
- * Date: April 16, 2018
+ * @version 1.3, April 16, 2018
  */
 public class Ticket {
 
