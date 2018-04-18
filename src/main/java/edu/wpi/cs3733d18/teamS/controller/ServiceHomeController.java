@@ -7,7 +7,6 @@ import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.input.KeyEvent;
 
 import java.io.IOException;
 
@@ -41,10 +40,6 @@ public class ServiceHomeController {
 
         populateTable();
     }
-
-//    public void onLanguageChange() {
-//
-//    }
 
     public void populateTable() {
         log_table.getColumns().removeAll(log_table.getColumns());
@@ -127,17 +122,6 @@ public class ServiceHomeController {
 
     @FXML
     void onQuickClick(ActionEvent event) throws IOException {
-
-    }
-
-    /**
-     * Autocomplete algorithm which sets the displayed items of a ComboBox to be only the ones that include the text
-     * in the edit field as a substring.
-     *
-     * @param e KeyEvent representing the key that was typed.
-     */
-    @FXML
-    void onKeyReleasedComboBox(KeyEvent e) {
 
     }
 }

@@ -2,8 +2,6 @@ package edu.wpi.cs3733d18.teamS.database;
 
 import edu.wpi.cs3733d18.teamS.data.Device;
 import edu.wpi.cs3733d18.teamS.data.Ticket;
-import org.joda.time.format.DateTimeFormat;
-import org.joda.time.format.DateTimeFormatter;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

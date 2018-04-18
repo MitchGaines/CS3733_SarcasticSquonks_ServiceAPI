@@ -7,7 +7,6 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
-import javafx.scene.input.KeyEvent;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -45,7 +44,9 @@ public class RegisterDeviceController {
         List<String> owners = new LinkedList<>();
         int length = devices.size();
         for (int i = 0; i < length; i++) {
-            owners.add(devices.get(i).getOwner());
+            if (!owners.contains(devices.get(i).getOwner())) {
+                owners.add(devices.get(i).getOwner());
+            }
         }
 
         names_selector.valueProperty().set(null);
@@ -61,9 +62,10 @@ public class RegisterDeviceController {
         List<String> device_types = new LinkedList<>();
         int length = devices.size();
         for (int i = 0; i < length; i++) {
-            device_types.add(devices.get(i).getDeviceType());
+            if (!device_types.contains(devices.get(i).getDeviceType())) {
+                device_types.add(devices.get(i).getDeviceType());
+            }
         }
-
         types_selector.valueProperty().set(null);
         types_selector.getItems().removeAll(types_selector.getItems());
         types_selector.getItems().addAll(device_types);
@@ -97,10 +99,5 @@ public class RegisterDeviceController {
     @FXML
     void onBackClick() {
         Main.switchScenes("Brigham and Women's", "/ServiceHomePage.fxml");
-    }
-
-    @FXML
-    void onKeyReleasedComboBox(KeyEvent e) {
-
     }
 }
