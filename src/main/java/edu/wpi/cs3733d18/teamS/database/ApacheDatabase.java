@@ -24,7 +24,7 @@ public class ApacheDatabase implements IDatabase {
     private Statement statement; // statement to be executed
 
     /**
-     * Stores a String for the name of the edu.wpi.cs3733d18.teamS.database database.
+     * Stores a String for the name of the database.
      */
     private String db_name; // name of the edu.wpi.cs3733d18.teamS.database
 
@@ -34,8 +34,8 @@ public class ApacheDatabase implements IDatabase {
     private boolean is_open = false; // tells whether connection is open
 
     /**
-     * Constructor for the edu.wpi.cs3733d18.teamS.database.
-     * @param db_name name of the edu.wpi.cs3733d18.teamS.database.
+     * Constructor for the database.
+     * @param db_name name of the database.
      */
     public ApacheDatabase(String db_name) {
         this.db_name = db_name;
@@ -114,9 +114,9 @@ public class ApacheDatabase implements IDatabase {
     } // end disconnect
 
     /**
-     * Checks whether the table with a given name exists in the edu.wpi.cs3733d18.teamS.database.
+     * Checks whether the table with a given name exists in the database.
      * @param table_name the name of the table.
-     * @return true if the table exists in the edu.wpi.cs3733d18.teamS.database, and false otherwise.
+     * @return true if the table exists in the database, and false otherwise.
      */
     @Override
     public boolean doesTableExist(String table_name) {
@@ -153,9 +153,9 @@ public class ApacheDatabase implements IDatabase {
     } // end doesTableExist
 
     /**
-     * Creates a table in the edu.wpi.cs3733d18.teamS.database.
+     * Creates a table in the database.
      * @param table_name the name of the table to create.
-     * @param columns    the columns (fields) of the edu.wpi.cs3733d18.teamS.database.
+     * @param columns    the columns (fields) of the database.
      */
     @Override
     public void createTable(String table_name, String[] columns) {
@@ -185,7 +185,7 @@ public class ApacheDatabase implements IDatabase {
     } // end createTable
 
     /**
-     * Removes a given table from the edu.wpi.cs3733d18.teamS.database.
+     * Removes a given table from the database.
      * @param table_name the name of the table to remove.
      */
     @Override
@@ -211,7 +211,7 @@ public class ApacheDatabase implements IDatabase {
     } // end dropTable
 
     /**
-     * Executes a query corresponding to a table in the edu.wpi.cs3733d18.teamS.database.
+     * Executes a query corresponding to a table in the database.
      * @param table_name      the name of the table.
      * @param columns         specific columns to select from the table; default null.
      * @param where_condition optional argument that restricts the query (e.g. "node_id = ?"); default null.
@@ -331,7 +331,7 @@ public class ApacheDatabase implements IDatabase {
     } // end insert
 
     /**
-     * Updates an entry (or multiple entries) in the edu.wpi.cs3733d18.teamS.database.
+     * Updates an entry (or multiple entries) in the database.
      * @param table_name      the name of the table.
      * @param values          the new values to insert.
      * @param where_condition optional argument that restricts the query (e.g. "node_id = ?"); default null.
@@ -447,7 +447,7 @@ public class ApacheDatabase implements IDatabase {
     }
 
     /**
-     * Gets the status of the edu.wpi.cs3733d18.teamS.database (open/closed).
+     * Gets the status of the database (open/closed).
      * @return true if the connection is open, false otherwise.
      */
     public boolean getIsOpen() {

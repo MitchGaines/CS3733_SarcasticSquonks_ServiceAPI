@@ -12,6 +12,12 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
+/**
+ * Controller for the tickets.
+ * @author Joseph Turcotte
+ * @version %I%, %G%
+ * Date: April 16, 2018
+ */
 public class TicketController {
 
     @FXML
@@ -29,6 +35,9 @@ public class TicketController {
     @FXML
     private Button back_btn;
 
+    /**
+     * Populates the Device box with all of the devices in the database.
+     */
     public void populateDevicesBox() {
 
         List<Device> devices = Storage.getInstance().getAllDevices();
@@ -43,6 +52,9 @@ public class TicketController {
         devices_list.getItems().addAll(device_names);
     }
 
+    /**
+     * Populates the problem box with all the problems with the devices in the database
+     */
     public void populateProblemsBox() {
         List<String> problems = new ArrayList<>();
         problems.add("Computer won't turn on.");
@@ -55,6 +67,9 @@ public class TicketController {
         problem_list.getItems().addAll(problems);
     }
 
+    /**
+     * Submits a request.
+     */
     public void submitRequest() {
         // TODO need to populate service request better (ask where incident took place, etc.)
         Ticket t = new Ticket("Joe", "Joe", additional_info.getText(), "3rd Floor");
@@ -67,6 +82,9 @@ public class TicketController {
         alert.showAndWait();
     }
 
+    /**
+     * Initializes the scene by populating the device box and problem box.
+     */
     public void initialize() {
         populateDevicesBox();
         populateProblemsBox();

@@ -12,8 +12,7 @@ import java.util.List;
 
 /**
  * Storage.java
- * The edu.wpi.cs3733d18.teamS.controller for the Apache Database
- *
+ * Class that stores information for the the Apache Database and manages methods related to it.
  * @author Joseph Turcotte
  * @version %I%, %G%
  * Date: March 29, 2018
@@ -45,8 +44,8 @@ public class Storage {
     // ---------------- DEVICE METHODS --------------- //
 
     /**
-     * Inserts the fields of a new Device object into the devices table
-     * @param device the Device object to store in the table
+     * Inserts the fields of a new Device object into the devices table.
+     * @param device the Device object to store in the table.
      */
     public void saveDevice(Device device) {
         database.insert("DEVICES", new String[]{
@@ -57,16 +56,16 @@ public class Storage {
     }
 
     /**
-     * Deletes a device from the table
-     * @param device the device to delete from the table
+     * Deletes a device from the table.
+     * @param device the device to delete from the table.
      */
     public void deleteDevice(Device device) {
         database.delete("DEVICES", "device_name = '" + device.getDeviceName() + "'", null);
     }
 
     /**
-     * Updates a device in the table
-     * @param device the Device object to update in the table
+     * Updates a device in the table.
+     * @param device the Device object to update in the table.
      */
     public void updateDevice(Device device) {
         String[] values = new String[]{
@@ -79,9 +78,9 @@ public class Storage {
     }
 
     /**
-     * Retrieves a device from the table by name
-     * @param device_name the name of the device
-     * @return a Device object corresponding to the name
+     * Retrieves a device from the table by name.
+     * @param device_name the name of the device.
+     * @return a Device object corresponding to the name.
      */
     public Device getDeviceByName(String device_name) {
         ResultSet r_set = database.query(
@@ -96,8 +95,8 @@ public class Storage {
     }
 
     /**
-     * Get all devices from the table
-     * @return a List of all devices in the table
+     * Get all devices from the table.
+     * @return a List of all devices in the table.
      */
     public List<Device> getAllDevices() {
         ResultSet r_set = database.query(
