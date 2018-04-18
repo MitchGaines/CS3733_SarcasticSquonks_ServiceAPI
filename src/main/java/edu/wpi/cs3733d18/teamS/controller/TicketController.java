@@ -6,7 +6,6 @@ import edu.wpi.cs3733d18.teamS.data.Ticket;
 import edu.wpi.cs3733d18.teamS.database.Storage;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.input.KeyEvent;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -71,14 +70,13 @@ public class TicketController {
      * Submits a request.
      */
     public void submitRequest() {
-        // TODO need to populate service request better (ask where incident took place, etc.)
-        Ticket t = new Ticket("Joe", "Joe", additional_info.getText(), "3rd Floor");
+        Ticket t = new Ticket("doctor doctor", "Techie Tom", additional_info.getText(), "3rd Floor");
         Storage.getInstance().saveTicket(t);
 
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Service Request Created");
-        alert.setHeaderText("Service Request Created");
-        alert.setContentText("Your service request was created successfully.");
+        alert.setTitle("Ticket Created");
+        alert.setHeaderText("Ticket Created");
+        alert.setContentText("Your ticket was created successfully.");
         alert.showAndWait();
     }
 
@@ -93,11 +91,6 @@ public class TicketController {
     @FXML
     void onBackClick() {
         Main.switchScenes("Brigham and Women's", "/ServiceHomePage.fxml");
-    }
-
-    @FXML
-    void onKeyReleasedComboBox(KeyEvent e) {
-
     }
 
 }

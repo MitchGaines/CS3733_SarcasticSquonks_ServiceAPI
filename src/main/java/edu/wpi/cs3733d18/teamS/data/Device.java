@@ -42,9 +42,9 @@ public class Device {
      */
     public static void generateInitialDevices() {
         Storage storage = Storage.getInstance();
-        storage.saveDevice(new Device("Galaxy S6", "Joseph Turcotte", "Smartphone"));
-        storage.saveDevice(new Device("Pixel 2", "Danny Sullivan", "Desktop"));
-        storage.saveDevice(new Device("Broken Apple", "Cormac Lynch-Collier", "Laptop"));
+        storage.saveDevice(new Device("Galaxy S6", "admin admin", "Smartphone"));
+        storage.saveDevice(new Device("Pixel 2", "staff staff", "Desktop"));
+        storage.saveDevice(new Device("Broken Apple", "doctor doctor", "Laptop"));
     }
 
     public String getDeviceName() {
