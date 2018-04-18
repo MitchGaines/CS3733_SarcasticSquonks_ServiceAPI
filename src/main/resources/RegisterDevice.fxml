@@ -28,17 +28,17 @@
                 <Insets right="10.0" />
             </GridPane.margin>
         </Text>
-        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Who is the owner of this device?" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
+        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="%Who_is_the_owner_of_this_device" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
             <GridPane.margin>
                 <Insets right="10.0" />
             </GridPane.margin>
         </Text>
-        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="What is the device's type?" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
+        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="%What_is_the_device's_type" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
             <GridPane.margin>
                 <Insets right="10.0" />
             </GridPane.margin>
         </Text>
-        <Button fx:id="create_device_btn" mnemonicParsing="false" onMouseClicked="#createDevice" text="\%createDevice" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
+        <Button fx:id="create_device_btn" mnemonicParsing="false" onMouseClicked="#createDevice" text="%create_device" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
         <Button fx:id="back_btn" mnemonicParsing="false" onMouseClicked="#onBackClick" text="\%Back" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.valignment="TOP">
             <GridPane.margin>
                 <Insets right="20.0" />
