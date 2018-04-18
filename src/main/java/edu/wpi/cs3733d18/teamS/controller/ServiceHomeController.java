@@ -90,12 +90,12 @@ public class ServiceHomeController {
 
     @FXML
     void onRequestClick() {
-        Main.switchScenes("Service request", "/Ticket.fxml");
+        Main.switchScenes("Service request", "/TicketPage.fxml");
     }
 
     @FXML
     void onRegisterClick() {
-        Main.switchScenes("Register device", "/RegisterDevice.fxml");
+        Main.switchScenes("Register device", "/RegisterDevicePage.fxml");
     }
 
     @FXML
