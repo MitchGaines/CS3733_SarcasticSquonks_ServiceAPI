@@ -74,7 +74,7 @@
                                 <Insets top="-40.0" />
                             </VBox.margin>
                      <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 23;" text="Pending Tickets" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 23;" text="%pending_ticket" />
                      </children>
                         </HBox>
                   <TableView fx:id="log_table" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="430.0" prefWidth="1091.0">
@@ -85,8 +85,8 @@
                   </TableView>
                   <HBox alignment="TOP_CENTER" prefHeight="50.0" prefWidth="200.0" spacing="40.0">
                      <children>
-                        <Button fx:id="register_device_btn" mnemonicParsing="false" onMouseClicked="#onRegisterClick" style="-fx-font-size: 18;" text="Register New Device" />
-                        <Button fx:id="create_request_btn" mnemonicParsing="false" onMouseClicked="#onRequestClick" style="-fx-font-size: 18;" text="Create Ticket" />
+                        <Button fx:id="register_device_btn" mnemonicParsing="false" onMouseClicked="#onRegisterClick" style="-fx-font-size: 18;" text="%register_new_device" />
+                        <Button fx:id="create_request_btn" mnemonicParsing="false" onMouseClicked="#onRequestClick" style="-fx-font-size: 18;" text="%create_ticket" />
                      </children>
                   </HBox>
                     </children>
