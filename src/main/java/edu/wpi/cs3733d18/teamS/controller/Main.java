@@ -68,5 +68,11 @@ public class Main extends Application {
         Scene primary_scene = new Scene(root, 1200, 800);
         primary_stage.setScene(primary_scene);
         primary_stage.show();
+
+        // before system shutdown
+        primary_stage.setOnCloseRequest(windowEvent -> {
+            Storage.getInstance().getDatabase().dropTable("DEVICES");
+            Storage.getInstance().getDatabase().dropTable("TICKETS");
+        });
     }
 }

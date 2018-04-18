@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.gluonhq.charm.glisten.control.ExpansionPanel?>
+<?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXComboBox?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TableColumn?>
@@ -77,7 +77,7 @@
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 23;" text="%pending_ticket" />
                      </children>
                         </HBox>
-                  <TableView fx:id="log_table" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="430.0" prefWidth="1091.0">
+                  <TableView fx:id="log_table" maxHeight="-Infinity" maxWidth="-Infinity" onMouseClicked="#onTicketChoose" prefHeight="430.0" prefWidth="1091.0">
                     <columns>
                       <TableColumn prefWidth="75.0" text="C1" />
                       <TableColumn prefWidth="75.0" text="C2" />
@@ -87,6 +87,8 @@
                      <children>
                         <Button fx:id="register_device_btn" mnemonicParsing="false" onMouseClicked="#onRegisterClick" style="-fx-font-size: 18;" text="%register_new_device" />
                         <Button fx:id="create_request_btn" mnemonicParsing="false" onMouseClicked="#onRequestClick" style="-fx-font-size: 18;" text="%create_ticket" />
+
+                        <JFXButton fx:id="resolve_ticket_btn" buttonType="RAISED" onMouseClicked="#onResolveClick" style="-fx-font-size: 18; -fx-background-color: #ffffff;" text="Resolve Ticket" />
                      </children>
                   </HBox>
                     </children>
