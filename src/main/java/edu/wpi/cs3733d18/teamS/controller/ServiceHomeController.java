@@ -13,10 +13,11 @@ import java.io.IOException;
 
 /**
  * Service API home controller
- * Author: Joseph Turcotte
+ *
+ * @author Joseph Turcotte
+ * @version %I%, %G%
  * Date: April 16, 2018
  */
-
 public class ServiceHomeController {
 
     @FXML
@@ -29,7 +30,7 @@ public class ServiceHomeController {
     private Button register_device_btn;
 
     /**
-     * Initialize the home page controller for the service API
+     * Initialize the home page controller for the service API.
      */
     public void initialize() {
 

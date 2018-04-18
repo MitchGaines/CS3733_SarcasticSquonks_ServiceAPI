@@ -4,7 +4,7 @@ package edu.wpi.cs3733d18.teamS.database;
 import java.sql.ResultSet;
 
 /**
- * An interface to help the classes work with in the edu.wpi.cs3733d18.teamS.database.
+ * An interface to help the classes work with the ApacheDatabase.
  * @author Joseph Turcotte
  * @version %I%, %G%
  * Date: March 24, 2018
@@ -32,12 +32,12 @@ public interface IDatabase {
      * Creates a table.
      *
      * @param table_name the name of the table.
-     * @param columns    the columns (fields) of the edu.wpi.cs3733d18.teamS.database.
+     * @param columns    the columns (fields) of the database.
      */
     void createTable(String table_name, String[] columns); // creates a table
 
     /**
-     * Removes a given table from the edu.wpi.cs3733d18.teamS.database.
+     * Removes a given table from the database.
      *
      * @param table_name the name of the table to remove.
      */
@@ -56,7 +56,7 @@ public interface IDatabase {
 
 
     /**
-     * Updates an entry (or multiple entries) in the edu.wpi.cs3733d18.teamS.database.
+     * Updates an entry (or multiple entries) in the database.
      *
      * @param table_name      the name of the table.
      * @param values          the new values to insert.
@@ -82,7 +82,7 @@ public interface IDatabase {
     String addQuotes(String s); // add quotes to a string
 
     /**
-     * Gets the status of the edu.wpi.cs3733d18.teamS.database (open/closed).
+     * Gets the status of the database (open/closed).
      */
     boolean getIsOpen(); // gets open status of edu.wpi.cs3733d18.teamS.database
 }

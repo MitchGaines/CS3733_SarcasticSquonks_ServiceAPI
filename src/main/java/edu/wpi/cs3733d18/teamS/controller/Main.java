@@ -11,7 +11,12 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-
+/**
+ * The main class
+ * @author Joseph Turcotte
+ * @version %I%, %G%
+ * Date: April 16, 2018
+ */
 public class Main extends Application {
 
     private static Stage primary_stage;
@@ -20,6 +25,12 @@ public class Main extends Application {
         launch(args);
     }
 
+    /**
+     * Switches the scene.
+     * @param title the title.
+     * @param fxml_name the name of the fxml file.
+     * @return the controller object.
+     */
     public static Object switchScenes(String title, String fxml_name) {
         try {
             FXMLLoader loader = new FXMLLoader(Main.class.getResource(fxml_name), AllText.getBundle());
@@ -36,6 +47,11 @@ public class Main extends Application {
         }
     }
 
+    /**
+     * Starts the scene.
+     * @param primary_stage the initial stage.
+     * @throws Exception
+     */
     @Override
     public void start(Stage primary_stage) throws Exception {
         AllText.changeLanguage("en");
