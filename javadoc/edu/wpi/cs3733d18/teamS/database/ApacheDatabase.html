@@ -50,7 +50,7 @@ var activeTableTab = "activeTableTab";
 <div class="subNav">
 <ul class="navList">
 <li>Prev&nbsp;Class</li>
-<li><a href="../../../../../edu/wpi/cs3733d18/teamS/database/IDatabase.html" title="interface in edu.wpi.cs3733d18.teamS.database"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+<li><a href="../../../../../edu/wpi/cs3733d18/teamS/database/IDatabase.html" title="interface in edu.wpi.cs3733d18.SquonksAPI.database"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../../../../index.html?edu/wpi/cs3733d18/teamS/database/ApacheDatabase.html" target="_top">Frames</a></li>
@@ -92,7 +92,7 @@ var activeTableTab = "activeTableTab";
 <!-- ========= END OF TOP NAVBAR ========= -->
 <!-- ======== START OF CLASS DATA ======== -->
 <div class="header">
-<div class="subTitle">edu.wpi.cs3733d18.teamS.database</div>
+<div class="subTitle">edu.wpi.cs3733d18.SquonksAPI.database</div>
 <h2 title="Class ApacheDatabase" class="title">Class ApacheDatabase</h2>
 </div>
 <div class="contentContainer">
@@ -100,7 +100,7 @@ var activeTableTab = "activeTableTab";
 <li>java.lang.Object</li>
 <li>
 <ul class="inheritance">
-<li>edu.wpi.cs3733d18.teamS.database.ApacheDatabase</li>
+<li>edu.wpi.cs3733d18.SquonksAPI.database.ApacheDatabase</li>
 </ul>
 </li>
 </ul>
@@ -109,13 +109,13 @@ var activeTableTab = "activeTableTab";
 <li class="blockList">
 <dl>
 <dt>All Implemented Interfaces:</dt>
-<dd><a href="../../../../../edu/wpi/cs3733d18/teamS/database/IDatabase.html" title="interface in edu.wpi.cs3733d18.teamS.database">IDatabase</a></dd>
+<dd><a href="../../../../../edu/wpi/cs3733d18/teamS/database/IDatabase.html" title="interface in edu.wpi.cs3733d18.SquonksAPI.database">IDatabase</a></dd>
 </dl>
 <hr>
 <br>
 <pre>public class <span class="typeNameLabel">ApacheDatabase</span>
 extends java.lang.Object
-implements <a href="../../../../../edu/wpi/cs3733d18/teamS/database/IDatabase.html" title="interface in edu.wpi.cs3733d18.teamS.database">IDatabase</a></pre>
+implements <a href="../../../../../edu/wpi/cs3733d18/teamS/database/IDatabase.html" title="interface in edu.wpi.cs3733d18.SquonksAPI.database">IDatabase</a></pre>
 <div class="block">ApacheDatabase
  A class that setups the database and has methods related to it.</div>
 <dl>
@@ -290,7 +290,7 @@ implements <a href="../../../../../edu/wpi/cs3733d18/teamS/database/IDatabase.ht
 <div class="block">Connects to the embedded driver.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="../../../../../edu/wpi/cs3733d18/teamS/database/IDatabase.html#connect--">connect</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../edu/wpi/cs3733d18/teamS/database/IDatabase.html" title="interface in edu.wpi.cs3733d18.teamS.database">IDatabase</a></code></dd>
+<dd><code><a href="../../../../../edu/wpi/cs3733d18/teamS/database/IDatabase.html#connect--">connect</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../edu/wpi/cs3733d18/teamS/database/IDatabase.html" title="interface in edu.wpi.cs3733d18.SquonksAPI.database">IDatabase</a></code></dd>
 </dl>
 </li>
 </ul>
@@ -304,7 +304,7 @@ implements <a href="../../../../../edu/wpi/cs3733d18/teamS/database/IDatabase.ht
 <div class="block">Disconnects from the embedded driver.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="../../../../../edu/wpi/cs3733d18/teamS/database/IDatabase.html#disconnect--">disconnect</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../edu/wpi/cs3733d18/teamS/database/IDatabase.html" title="interface in edu.wpi.cs3733d18.teamS.database">IDatabase</a></code></dd>
+<dd><code><a href="../../../../../edu/wpi/cs3733d18/teamS/database/IDatabase.html#disconnect--">disconnect</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../edu/wpi/cs3733d18/teamS/database/IDatabase.html" title="interface in edu.wpi.cs3733d18.SquonksAPI.database">IDatabase</a></code></dd>
 </dl>
 </li>
 </ul>
@@ -318,7 +318,7 @@ implements <a href="../../../../../edu/wpi/cs3733d18/teamS/database/IDatabase.ht
 <div class="block">Checks whether the table with a given name exists in the database.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="../../../../../edu/wpi/cs3733d18/teamS/database/IDatabase.html#doesTableExist-java.lang.String-">doesTableExist</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../edu/wpi/cs3733d18/teamS/database/IDatabase.html" title="interface in edu.wpi.cs3733d18.teamS.database">IDatabase</a></code></dd>
+<dd><code><a href="../../../../../edu/wpi/cs3733d18/teamS/database/IDatabase.html#doesTableExist-java.lang.String-">doesTableExist</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../edu/wpi/cs3733d18/teamS/database/IDatabase.html" title="interface in edu.wpi.cs3733d18.SquonksAPI.database">IDatabase</a></code></dd>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>table_name</code> - the name of the table.</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
@@ -337,7 +337,7 @@ implements <a href="../../../../../edu/wpi/cs3733d18/teamS/database/IDatabase.ht
 <div class="block">Creates a table in the database.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="../../../../../edu/wpi/cs3733d18/teamS/database/IDatabase.html#createTable-java.lang.String-java.lang.String:A-">createTable</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../edu/wpi/cs3733d18/teamS/database/IDatabase.html" title="interface in edu.wpi.cs3733d18.teamS.database">IDatabase</a></code></dd>
+<dd><code><a href="../../../../../edu/wpi/cs3733d18/teamS/database/IDatabase.html#createTable-java.lang.String-java.lang.String:A-">createTable</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../edu/wpi/cs3733d18/teamS/database/IDatabase.html" title="interface in edu.wpi.cs3733d18.SquonksAPI.database">IDatabase</a></code></dd>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>table_name</code> - the name of the table to create.</dd>
 <dd><code>columns</code> - the columns (fields) of the database.</dd>
@@ -354,7 +354,7 @@ implements <a href="../../../../../edu/wpi/cs3733d18/teamS/database/IDatabase.ht
 <div class="block">Removes a given table from the database.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="../../../../../edu/wpi/cs3733d18/teamS/database/IDatabase.html#dropTable-java.lang.String-">dropTable</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../edu/wpi/cs3733d18/teamS/database/IDatabase.html" title="interface in edu.wpi.cs3733d18.teamS.database">IDatabase</a></code></dd>
+<dd><code><a href="../../../../../edu/wpi/cs3733d18/teamS/database/IDatabase.html#dropTable-java.lang.String-">dropTable</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../edu/wpi/cs3733d18/teamS/database/IDatabase.html" title="interface in edu.wpi.cs3733d18.SquonksAPI.database">IDatabase</a></code></dd>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>table_name</code> - the name of the table to remove.</dd>
 </dl>
@@ -374,7 +374,7 @@ implements <a href="../../../../../edu/wpi/cs3733d18/teamS/database/IDatabase.ht
 <div class="block">Executes a query corresponding to a table in the database.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="../../../../../edu/wpi/cs3733d18/teamS/database/IDatabase.html#query-java.lang.String-java.lang.String:A-java.lang.String-java.lang.String:A-java.lang.String-">query</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../edu/wpi/cs3733d18/teamS/database/IDatabase.html" title="interface in edu.wpi.cs3733d18.teamS.database">IDatabase</a></code></dd>
+<dd><code><a href="../../../../../edu/wpi/cs3733d18/teamS/database/IDatabase.html#query-java.lang.String-java.lang.String:A-java.lang.String-java.lang.String:A-java.lang.String-">query</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../edu/wpi/cs3733d18/teamS/database/IDatabase.html" title="interface in edu.wpi.cs3733d18.SquonksAPI.database">IDatabase</a></code></dd>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>table_name</code> - the name of the table.</dd>
 <dd><code>columns</code> - specific columns to select from the table; default null.</dd>
@@ -397,7 +397,7 @@ implements <a href="../../../../../edu/wpi/cs3733d18/teamS/database/IDatabase.ht
 <div class="block">Inserts values into the table with a given name.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="../../../../../edu/wpi/cs3733d18/teamS/database/IDatabase.html#insert-java.lang.String-java.lang.String:A-">insert</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../edu/wpi/cs3733d18/teamS/database/IDatabase.html" title="interface in edu.wpi.cs3733d18.teamS.database">IDatabase</a></code></dd>
+<dd><code><a href="../../../../../edu/wpi/cs3733d18/teamS/database/IDatabase.html#insert-java.lang.String-java.lang.String:A-">insert</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../edu/wpi/cs3733d18/teamS/database/IDatabase.html" title="interface in edu.wpi.cs3733d18.SquonksAPI.database">IDatabase</a></code></dd>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>table_name</code> - the name of the table.</dd>
 <dd><code>values</code> - the values to insert.</dd>
@@ -417,7 +417,7 @@ implements <a href="../../../../../edu/wpi/cs3733d18/teamS/database/IDatabase.ht
 <div class="block">Updates an entry (or multiple entries) in the database.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="../../../../../edu/wpi/cs3733d18/teamS/database/IDatabase.html#update-java.lang.String-java.lang.String:A-java.lang.String-java.lang.String:A-">update</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../edu/wpi/cs3733d18/teamS/database/IDatabase.html" title="interface in edu.wpi.cs3733d18.teamS.database">IDatabase</a></code></dd>
+<dd><code><a href="../../../../../edu/wpi/cs3733d18/teamS/database/IDatabase.html#update-java.lang.String-java.lang.String:A-java.lang.String-java.lang.String:A-">update</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../edu/wpi/cs3733d18/teamS/database/IDatabase.html" title="interface in edu.wpi.cs3733d18.SquonksAPI.database">IDatabase</a></code></dd>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>table_name</code> - the name of the table.</dd>
 <dd><code>values</code> - the new values to insert.</dd>
@@ -438,7 +438,7 @@ implements <a href="../../../../../edu/wpi/cs3733d18/teamS/database/IDatabase.ht
 <div class="block">Removes an entry from the table with the given name.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="../../../../../edu/wpi/cs3733d18/teamS/database/IDatabase.html#delete-java.lang.String-java.lang.String-java.lang.String:A-">delete</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../edu/wpi/cs3733d18/teamS/database/IDatabase.html" title="interface in edu.wpi.cs3733d18.teamS.database">IDatabase</a></code></dd>
+<dd><code><a href="../../../../../edu/wpi/cs3733d18/teamS/database/IDatabase.html#delete-java.lang.String-java.lang.String-java.lang.String:A-">delete</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../edu/wpi/cs3733d18/teamS/database/IDatabase.html" title="interface in edu.wpi.cs3733d18.SquonksAPI.database">IDatabase</a></code></dd>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>table_name</code> - the name of the table.</dd>
 <dd><code>where_condition</code> - optional argument that restricts the query (e.g. "node_id = ?"); default null.</dd>
@@ -456,7 +456,7 @@ implements <a href="../../../../../edu/wpi/cs3733d18/teamS/database/IDatabase.ht
 <div class="block">Adds quotes to a given string for SQL statements.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="../../../../../edu/wpi/cs3733d18/teamS/database/IDatabase.html#addQuotes-java.lang.String-">addQuotes</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../edu/wpi/cs3733d18/teamS/database/IDatabase.html" title="interface in edu.wpi.cs3733d18.teamS.database">IDatabase</a></code></dd>
+<dd><code><a href="../../../../../edu/wpi/cs3733d18/teamS/database/IDatabase.html#addQuotes-java.lang.String-">addQuotes</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../edu/wpi/cs3733d18/teamS/database/IDatabase.html" title="interface in edu.wpi.cs3733d18.SquonksAPI.database">IDatabase</a></code></dd>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>s</code> - the string to add quotes to.</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
@@ -474,7 +474,7 @@ implements <a href="../../../../../edu/wpi/cs3733d18/teamS/database/IDatabase.ht
 <div class="block">Gets the status of the database (open/closed).</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="../../../../../edu/wpi/cs3733d18/teamS/database/IDatabase.html#getIsOpen--">getIsOpen</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../edu/wpi/cs3733d18/teamS/database/IDatabase.html" title="interface in edu.wpi.cs3733d18.teamS.database">IDatabase</a></code></dd>
+<dd><code><a href="../../../../../edu/wpi/cs3733d18/teamS/database/IDatabase.html#getIsOpen--">getIsOpen</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../edu/wpi/cs3733d18/teamS/database/IDatabase.html" title="interface in edu.wpi.cs3733d18.SquonksAPI.database">IDatabase</a></code></dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>true if the connection is open, false otherwise.</dd>
 </dl>
@@ -509,7 +509,7 @@ implements <a href="../../../../../edu/wpi/cs3733d18/teamS/database/IDatabase.ht
 <div class="subNav">
 <ul class="navList">
 <li>Prev&nbsp;Class</li>
-<li><a href="../../../../../edu/wpi/cs3733d18/teamS/database/IDatabase.html" title="interface in edu.wpi.cs3733d18.teamS.database"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+<li><a href="../../../../../edu/wpi/cs3733d18/teamS/database/IDatabase.html" title="interface in edu.wpi.cs3733d18.SquonksAPI.database"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../../../../index.html?edu/wpi/cs3733d18/teamS/database/ApacheDatabase.html" target="_top">Frames</a></li>
