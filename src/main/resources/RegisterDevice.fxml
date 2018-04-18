@@ -23,7 +23,7 @@
     </rowConstraints>
     <children>
         <ComboBox fx:id="names_selector" onMouseClicked="#populateNamesBox" prefWidth="150.0" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
-        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Give a name to the device you want to register." GridPane.halignment="RIGHT" GridPane.rowIndex="1">
+        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="%Give_a_name_to_the_device_you_want_to_register" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
             <GridPane.margin>
                 <Insets right="10.0" />
             </GridPane.margin>
