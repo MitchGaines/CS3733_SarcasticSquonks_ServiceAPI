@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Text?>
+
+<GridPane prefHeight="400.0" prefWidth="1174.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733d18.teamS.controller.RegisterDeviceController">
+    <columnConstraints>
+        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints />
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+    </rowConstraints>
+    <children>
+        <ComboBox fx:id="names_selector" onMouseClicked="#populateNamesBox" prefWidth="150.0" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Give a name to the device you want to register." GridPane.halignment="RIGHT" GridPane.rowIndex="1">
+            <GridPane.margin>
+                <Insets right="10.0" />
+            </GridPane.margin>
+        </Text>
+        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="%Who_is_the_owner_of_this_device" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
+            <GridPane.margin>
+                <Insets right="10.0" />
+            </GridPane.margin>
+        </Text>
+        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="%What_is_the_device's_type" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
+            <GridPane.margin>
+                <Insets right="10.0" />
+            </GridPane.margin>
+        </Text>
+        <Button fx:id="create_device_btn" mnemonicParsing="false" onMouseClicked="#createDevice" text="%create_device" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
+        <Button fx:id="back_btn" mnemonicParsing="false" onMouseClicked="#onBackClick" text="\%Back" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.valignment="TOP">
+            <GridPane.margin>
+                <Insets right="20.0" />
+            </GridPane.margin>
+        </Button>
+      <TextField fx:id="device_name" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+      <ComboBox fx:id="types_selector" onMouseClicked="#populateTypesBox" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+    </children>
+    <padding>
+        <Insets top="40.0" />
+    </padding>
+</GridPane>
