@@ -49,12 +49,12 @@ public class Ticket {
      */
     public static void generateInitialTickets() {
         Storage storage = Storage.getInstance();
-        storage.saveTicket(new Ticket("admin admin", "Techie Tom",
-                "My computer broke!", "3rd Hallway"));
-        storage.saveTicket(new Ticket("staff staff", "Techie Tom",
-                "My computer broke again!", "3rd Hallway"));
-        storage.saveTicket(new Ticket("doctor doctor", "Techie Tom",
-                "Can't connect to Wifi!", "3rd Hallway"));
+        storage.saveTicket(new Ticket("Admin Adam", "Techie Tom",
+                "My computer broke!", "3rd Floor"));
+        storage.saveTicket(new Ticket("Stella Staff", "Techie Tom",
+                "My computer broke again!", "Ground Floor"));
+        storage.saveTicket(new Ticket("Doctor Danny", "Techie Tom",
+                "Can't connect to Wifi!", "Front Desk"));
     }
 
     public long getID() {

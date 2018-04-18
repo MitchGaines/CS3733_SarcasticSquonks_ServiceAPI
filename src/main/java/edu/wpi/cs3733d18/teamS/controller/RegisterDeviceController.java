@@ -1,6 +1,7 @@
 package edu.wpi.cs3733d18.teamS.controller;
 
 import edu.wpi.cs3733d18.teamS.data.Device;
+import edu.wpi.cs3733d18.teamS.data.User;
 import edu.wpi.cs3733d18.teamS.database.Storage;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -40,12 +41,13 @@ public class RegisterDeviceController {
      */
     public void populateNamesBox() {
 
-        List<Device> devices = Storage.getInstance().getAllDevices();
+        List<User> users = Storage.getInstance().getAllUsers();
         List<String> owners = new LinkedList<>();
-        int length = devices.size();
+        int length = users.size();
+
         for (int i = 0; i < length; i++) {
-            if (!owners.contains(devices.get(i).getOwner())) {
-                owners.add(devices.get(i).getOwner());
+            if (!owners.contains(users.get(i).toString())) {
+                owners.add(users.get(i).toString());
             }
         }
 
