@@ -33,12 +33,16 @@ public class Main extends Application {
      */
     public static Object switchScenes(String title, String fxml_name) {
         try {
+            double old_width = primary_stage.getWidth();
+            double old_height = primary_stage.getHeight();
             FXMLLoader loader = new FXMLLoader(Main.class.getResource(fxml_name), AllText.getBundle());
             Parent user_parent = loader.load();
             Object controller = loader.getController();
-            Scene new_scene = new Scene(user_parent, primary_stage.getWidth() - 13, primary_stage.getHeight() - 35.5);
+            Scene new_scene = new Scene(user_parent, primary_stage.getWidth(), primary_stage.getHeight());
             primary_stage.setTitle(title);
             primary_stage.setScene(new_scene);
+            primary_stage.setWidth(old_width);
+            primary_stage.setHeight(old_height);
             primary_stage.show();
             return controller;
         } catch (IOException e) {
