@@ -189,7 +189,7 @@ public class Storage {
      *
      * @param ticket the Ticket object to remove from the table.
      */
-    public void deleteRequest(Ticket ticket) {
+    public void deleteTicket(Ticket ticket) {
         database.delete("TICKETS", "ticket_id = " + ticket.getID(), null);
     }
 

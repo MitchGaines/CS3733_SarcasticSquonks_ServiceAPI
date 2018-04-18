@@ -20,19 +20,32 @@ import java.io.IOException;
 public class ServiceHomeController {
 
     @FXML
-    private TableView log_table;
+    private TableView<Ticket> log_table;
 
     @FXML
     private Button create_request_btn;
 
     @FXML
+    private Button resolve_ticket_btn;
+
+    @FXML
     private Button register_device_btn;
+
+    private Ticket selected_ticket;
 
     /**
      * Initialize the home page controller for the service API
      */
     public void initialize() {
 
+        populateTable();
+    }
+
+//    public void onLanguageChange() {
+//
+//    }
+
+    public void populateTable() {
         log_table.getColumns().removeAll(log_table.getColumns());
 
         TableColumn<Ticket, String> numberCol = new TableColumn("Ticket Number");
@@ -82,11 +95,24 @@ public class ServiceHomeController {
         log_table.setItems(FXCollections.observableArrayList(Storage.getInstance().getAllTickets()));
     }
 
-//    public void onLanguageChange() {
-//
-//    }
+    @FXML
+    void onTicketChoose() {
+        selected_ticket = log_table.getSelectionModel().getSelectedItem();
+    }
 
-    // TODO resolve a ticket
+    @FXML
+    void onResolveClick() {
+        if(selected_ticket != null) {
+            Storage.getInstance().deleteTicket(selected_ticket);
+            populateTable();
+        } else {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("No Ticket Selected");
+            alert.setHeaderText("No Ticket Selected");
+            alert.setContentText("No ticket was selected.");
+            alert.showAndWait();
+        }
+    }
 
     @FXML
     void onRequestClick() {
