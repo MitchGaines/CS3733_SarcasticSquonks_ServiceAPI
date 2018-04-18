@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXComboBox?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -16,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane fx:id="main_pane" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733d18.teamS.controller.ServiceHomeController">
+<BorderPane fx:id="main_pane" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733d18.SquonksAPI.controller.ServiceHomeController">
     <center>
         <StackPane fx:id="stack_pane" prefHeight="650.0" prefWidth="1200.0" BorderPane.alignment="CENTER">
             <children>
@@ -30,7 +29,7 @@
                 </ImageView>
                 <VBox alignment="TOP_CENTER" prefHeight="570.0" prefWidth="1200.0" spacing="50.0">
                     <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 23;" text="%pending_ticket" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 23;" text="Pending Tickets" />
                   <TableView fx:id="log_table" maxHeight="-Infinity" maxWidth="-Infinity" onMouseClicked="#onTicketChoose" prefHeight="430.0" prefWidth="1091.0">
                     <columns>
                       <TableColumn prefWidth="75.0" text="C1" />
@@ -49,8 +48,8 @@
                      <children>
 
                         <JFXButton fx:id="resolve_ticket_btn" buttonType="RAISED" onMouseClicked="#onResolveClick" style="-fx-font-size: 18; -fx-background-color: #ffffff;" text="Resolve Ticket" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
-                        <JFXButton fx:id="register_device_btn" buttonType="RAISED" onMouseClicked="#onRegisterClick" style="-fx-background-color: #ffffff; -fx-font-size: 18;" text="%register_new_device" GridPane.halignment="RIGHT" />
-                        <JFXButton fx:id="create_request_btn" buttonType="RAISED" onMouseClicked="#onRequestClick" style="-fx-font-size: 18; -fx-background-color: #ffffff;" text="%create_ticket" GridPane.columnIndex="2" GridPane.halignment="LEFT" />
+                        <JFXButton fx:id="register_device_btn" buttonType="RAISED" onMouseClicked="#onRegisterClick" style="-fx-background-color: #ffffff; -fx-font-size: 18;" text="Register New Device" GridPane.halignment="RIGHT" />
+                        <JFXButton fx:id="create_request_btn" buttonType="RAISED" onMouseClicked="#onRequestClick" style="-fx-font-size: 18; -fx-background-color: #ffffff;" text="Create Ticket" GridPane.columnIndex="2" GridPane.halignment="LEFT" />
                      </children>
                   </GridPane>
                     </children>
@@ -63,9 +62,6 @@
     </center>
     <bottom>
         <HBox alignment="BOTTOM_LEFT" prefHeight="50.0" prefWidth="273.0" spacing="20.0" BorderPane.alignment="CENTER">
-            <children>
-                <JFXComboBox focusColor="#4863a0" labelFloat="true" promptText="%language" style="-fx-font-size: 18; -fx-background-color: #ffffff;" />
-            </children>
             <padding>
                 <Insets bottom="10.0" left="10.0" />
             </padding>

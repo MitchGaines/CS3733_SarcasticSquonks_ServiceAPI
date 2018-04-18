@@ -1,4 +1,4 @@
-package edu.wpi.cs3733d18.teamS.database;
+package edu.wpi.cs3733d18.SquonksAPI.database;
 
 
 import java.sql.ResultSet;
@@ -84,7 +84,7 @@ public interface IDatabase {
     /**
      * Gets the status of the database (open/closed).
      */
-    boolean getIsOpen(); // gets open status of edu.wpi.cs3733d18.teamS.database
+    boolean getIsOpen(); // gets open status of edu.wpi.cs3733d18.SquonksAPI.database
 }
 
 

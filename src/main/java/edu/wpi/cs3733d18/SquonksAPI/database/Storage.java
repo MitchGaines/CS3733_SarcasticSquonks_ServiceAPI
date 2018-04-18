@@ -1,8 +1,8 @@
-package edu.wpi.cs3733d18.teamS.database;
+package edu.wpi.cs3733d18.SquonksAPI.database;
 
-import edu.wpi.cs3733d18.teamS.data.Device;
-import edu.wpi.cs3733d18.teamS.data.Ticket;
-import edu.wpi.cs3733d18.teamS.data.User;
+import edu.wpi.cs3733d18.SquonksAPI.data.Device;
+import edu.wpi.cs3733d18.SquonksAPI.data.Ticket;
+import edu.wpi.cs3733d18.SquonksAPI.data.User;
 
 import java.nio.charset.Charset;
 import java.sql.ResultSet;
@@ -46,7 +46,7 @@ public class Storage {
     // ---------------- USER METHODS ----------------- //
 
     /**
-     * Inserts the fields of a new edu.wpi.cs3733d18.teamS.user object into the users table.
+     * Inserts the fields of a new edu.wpi.cs3733d18.SquonksAPI.user object into the users table.
      *
      * @param user the User object to store in the table.
      */
@@ -62,18 +62,18 @@ public class Storage {
     }
 
     /**
-     * Deletes the given edu.wpi.cs3733d18.teamS.user from the users table.
+     * Deletes the given edu.wpi.cs3733d18.SquonksAPI.user from the users table.
      *
-     * @param user the edu.wpi.cs3733d18.teamS.user to delete from the users table.
+     * @param user the edu.wpi.cs3733d18.SquonksAPI.user to delete from the users table.
      */
     public void deleteUser(User user) {
         database.delete("USERS", "user_id = " + user.getUserID(), null);
     }
 
     /**
-     * Updates a edu.wpi.cs3733d18.teamS.user in the users table with new values.
+     * Updates a edu.wpi.cs3733d18.SquonksAPI.user in the users table with new values.
      *
-     * @param user the edu.wpi.cs3733d18.teamS.user to update in the edu.wpi.cs3733d18.teamS.database, with the new values.
+     * @param user the edu.wpi.cs3733d18.SquonksAPI.user to update in the edu.wpi.cs3733d18.SquonksAPI.database, with the new values.
      */
     public void updateUser(User user) {
         String[] values = new String[]{
@@ -89,10 +89,10 @@ public class Storage {
     }
 
     /**
-     * Gets a edu.wpi.cs3733d18.teamS.user from the users table by unique id.
+     * Gets a edu.wpi.cs3733d18.SquonksAPI.user from the users table by unique id.
      *
-     * @param id the edu.wpi.cs3733d18.teamS.user id of the edu.wpi.cs3733d18.teamS.user in the table.
-     * @return the edu.wpi.cs3733d18.teamS.user with the given edu.wpi.cs3733d18.teamS.user id.
+     * @param id the edu.wpi.cs3733d18.SquonksAPI.user id of the edu.wpi.cs3733d18.SquonksAPI.user in the table.
+     * @return the edu.wpi.cs3733d18.SquonksAPI.user with the given edu.wpi.cs3733d18.SquonksAPI.user id.
      */
     public User getUserByID(long id) {
         ResultSet r_set = database.query("USERS", null,
@@ -101,10 +101,10 @@ public class Storage {
     }
 
     /**
-     * Gets a edu.wpi.cs3733d18.teamS.user from the table by username only.
+     * Gets a edu.wpi.cs3733d18.SquonksAPI.user from the table by username only.
      *
-     * @param username the username of the edu.wpi.cs3733d18.teamS.user to retrieve.
-     * @return a edu.wpi.cs3733d18.teamS.user with the given username.
+     * @param username the username of the edu.wpi.cs3733d18.SquonksAPI.user to retrieve.
+     * @return a edu.wpi.cs3733d18.SquonksAPI.user with the given username.
      */
     public User getUserByName(String username) {
         ResultSet r_set = database.query("USERS", null,
@@ -113,11 +113,11 @@ public class Storage {
     }
 
     /**
-     * Gets a edu.wpi.cs3733d18.teamS.user from the users table by username and password.
+     * Gets a edu.wpi.cs3733d18.SquonksAPI.user from the users table by username and password.
      *
-     * @param username username of the edu.wpi.cs3733d18.teamS.user to retrieve.
-     * @param password password of the edu.wpi.cs3733d18.teamS.user to retrieve.
-     * @return a edu.wpi.cs3733d18.teamS.user with the given name and password.
+     * @param username username of the edu.wpi.cs3733d18.SquonksAPI.user to retrieve.
+     * @param password password of the edu.wpi.cs3733d18.SquonksAPI.user to retrieve.
+     * @return a edu.wpi.cs3733d18.SquonksAPI.user with the given name and password.
      */
     public User getUserByCredentials(String username, String password) {
         ResultSet r_set = database.query(
@@ -164,7 +164,7 @@ public class Storage {
     }
 
     /**
-     * Private method for retrieving a edu.wpi.cs3733d18.teamS.user from a edu.wpi.cs3733d18.teamS.database query.
+     * Private method for retrieving a edu.wpi.cs3733d18.SquonksAPI.user from a edu.wpi.cs3733d18.SquonksAPI.database query.
      *
      * @param r_set The ResultSet containing a single table entry.
      * @return a User object corresponding to the single table entry.
@@ -176,7 +176,7 @@ public class Storage {
                 return null;
             }
 
-            // extract fields from result set and store in edu.wpi.cs3733d18.teamS.user object
+            // extract fields from result set and store in edu.wpi.cs3733d18.SquonksAPI.user object
             long id = r_set.getLong("user_id");
             String username = r_set.getString("username");
             String password = r_set.getString("password");

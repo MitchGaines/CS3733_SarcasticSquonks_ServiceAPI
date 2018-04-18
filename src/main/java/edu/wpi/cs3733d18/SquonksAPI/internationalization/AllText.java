@@ -1,4 +1,4 @@
-package edu.wpi.cs3733d18.teamS.internationalization;
+package edu.wpi.cs3733d18.SquonksAPI.internationalization;
 
 import java.util.Locale;
 import java.util.ResourceBundle;

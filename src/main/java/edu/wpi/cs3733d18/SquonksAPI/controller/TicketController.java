@@ -1,9 +1,9 @@
-package edu.wpi.cs3733d18.teamS.controller;
+package edu.wpi.cs3733d18.SquonksAPI.controller;
 
 
-import edu.wpi.cs3733d18.teamS.data.Device;
-import edu.wpi.cs3733d18.teamS.data.Ticket;
-import edu.wpi.cs3733d18.teamS.database.Storage;
+import edu.wpi.cs3733d18.SquonksAPI.data.Device;
+import edu.wpi.cs3733d18.SquonksAPI.data.Ticket;
+import edu.wpi.cs3733d18.SquonksAPI.database.Storage;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
@@ -90,7 +90,7 @@ public class TicketController {
 
     @FXML
     void onBackClick() {
-        Main.switchScenes("Brigham and Women's", "/ServiceHomePage.fxml");
+        SquonksAPI.switchScenes("Brigham and Women's", "/ServiceHomePage.fxml");
     }
 
 }

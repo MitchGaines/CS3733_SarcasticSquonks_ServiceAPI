@@ -1,15 +1,14 @@
-package edu.wpi.cs3733d18.teamS.data;
+package edu.wpi.cs3733d18.SquonksAPI.data;
 
-import edu.wpi.cs3733d18.teamS.database.Storage;
+import edu.wpi.cs3733d18.SquonksAPI.database.Storage;
 
-import java.security.SecureRandom;
 import java.util.Arrays;
 import java.util.Base64;
 import java.util.Objects;
 
 /**
  * User.java
- * Class for all possible edu.wpi.cs3733d18.teamS.user types
+ * Class for all possible edu.wpi.cs3733d18.SquonksAPI.user types
  * Author: Danny Sullivan
  * Date: March 31, 2018
  * Modified by: Joseph Turcotte
@@ -85,7 +84,7 @@ public class User {
      * for the User if they are able to modify the map or not.
      *
      * @param if_can_mod_map is a boolean value, true if map can be
-     *                       modified by the edu.wpi.cs3733d18.teamS.user, false otherwise
+     *                       modified by the edu.wpi.cs3733d18.SquonksAPI.user, false otherwise
      */
     public void setCanModMap(boolean if_can_mod_map) {
         can_mod_map = if_can_mod_map;
