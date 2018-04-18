@@ -119,9 +119,4 @@ public class ServiceHomeController {
     void onRegisterClick() {
         Main.switchScenes("Register device", "/RegisterDevicePage.fxml");
     }
-
-    @FXML
-    void onQuickClick(ActionEvent event) throws IOException {
-
-    }
 }

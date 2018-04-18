@@ -2,7 +2,9 @@ package edu.wpi.cs3733d18.teamS.database;
 
 import edu.wpi.cs3733d18.teamS.data.Device;
 import edu.wpi.cs3733d18.teamS.data.Ticket;
+import edu.wpi.cs3733d18.teamS.data.User;
 
+import java.nio.charset.Charset;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.LinkedList;
@@ -19,6 +21,8 @@ import java.util.List;
 public class Storage {
 
     // to exclude auto-generated IDs from tables
+    private final String USER_VALUES = String.format("( %s, %s, %s, %s, %s, %s )",
+            "username", "password", "first_name", "last_name", "user_type", "can_mod_map");
     private final String TICKET_VALUES = String.format(" ( %s, %s, %s, %s )",
             "requester_name", "fulfiller_name", "description", "location");
     /**
@@ -37,6 +41,160 @@ public class Storage {
      */
     public static Storage getInstance() {
         return StorageHolder.instance;
+    }
+
+    // ---------------- USER METHODS ----------------- //
+
+    /**
+     * Inserts the fields of a new edu.wpi.cs3733d18.teamS.user object into the users table.
+     *
+     * @param user the User object to store in the table.
+     */
+    public void saveUser(User user) {
+        database.insert("USERS" + USER_VALUES, new String[]{
+                database.addQuotes(user.getUsername()),
+                database.addQuotes(new String(user.getEncodedPassword(), Charset.forName("UTF-8"))),
+                database.addQuotes(user.getFirstName()),
+                database.addQuotes(user.getLastName()),
+                database.addQuotes(user.getType().toString()),
+                String.valueOf(user.canModMap())
+        });
+    }
+
+    /**
+     * Deletes the given edu.wpi.cs3733d18.teamS.user from the users table.
+     *
+     * @param user the edu.wpi.cs3733d18.teamS.user to delete from the users table.
+     */
+    public void deleteUser(User user) {
+        database.delete("USERS", "user_id = " + user.getUserID(), null);
+    }
+
+    /**
+     * Updates a edu.wpi.cs3733d18.teamS.user in the users table with new values.
+     *
+     * @param user the edu.wpi.cs3733d18.teamS.user to update in the edu.wpi.cs3733d18.teamS.database, with the new values.
+     */
+    public void updateUser(User user) {
+        String[] values = new String[]{
+                String.format("%s = '%s'", "username", user.getUsername().replaceAll("'", "''")),
+                String.format("%s = '%s'", "password", new String(user.getEncodedPassword(), Charset.forName("UTF-8")).replaceAll("'", "''")),
+                String.format("%s = '%s'", "first_name", user.getFirstName().replaceAll("'", "''")),
+                String.format("%s = '%s'", "last_name", user.getLastName().replaceAll("'", "''")),
+                String.format("%s = '%s'", "user_type", user.getType().toString()),
+                String.format("%s = %b", "can_mod_map", user.canModMap())
+        };
+
+        database.update("USERS", values, "user_id = " + user.getUserID(), null);
+    }
+
+    /**
+     * Gets a edu.wpi.cs3733d18.teamS.user from the users table by unique id.
+     *
+     * @param id the edu.wpi.cs3733d18.teamS.user id of the edu.wpi.cs3733d18.teamS.user in the table.
+     * @return the edu.wpi.cs3733d18.teamS.user with the given edu.wpi.cs3733d18.teamS.user id.
+     */
+    public User getUserByID(long id) {
+        ResultSet r_set = database.query("USERS", null,
+                "user_id = " + id, null, null);
+        return getUser(r_set);
+    }
+
+    /**
+     * Gets a edu.wpi.cs3733d18.teamS.user from the table by username only.
+     *
+     * @param username the username of the edu.wpi.cs3733d18.teamS.user to retrieve.
+     * @return a edu.wpi.cs3733d18.teamS.user with the given username.
+     */
+    public User getUserByName(String username) {
+        ResultSet r_set = database.query("USERS", null,
+                "username = '" + username + "'", null, null);
+        return getUser(r_set);
+    }
+
+    /**
+     * Gets a edu.wpi.cs3733d18.teamS.user from the users table by username and password.
+     *
+     * @param username username of the edu.wpi.cs3733d18.teamS.user to retrieve.
+     * @param password password of the edu.wpi.cs3733d18.teamS.user to retrieve.
+     * @return a edu.wpi.cs3733d18.teamS.user with the given name and password.
+     */
+    public User getUserByCredentials(String username, String password) {
+        ResultSet r_set = database.query(
+                "USERS",
+                null,
+                "username = ? AND password = ?",
+                new String[]{username, password},
+                null
+        );
+
+        return getUser(r_set);
+    }
+
+    /**
+     * Gets a list of all users in the users table.
+     *
+     * @return a List of users in the users table.
+     */
+    public List<User> getAllUsers() {
+        ResultSet r_set = database.query("USERS", null, null, null, null);
+        return getUsers(r_set);
+    }
+
+    /**
+     * Private method for parsing result set.
+     *
+     * @param r_set ResultSet containing table entries.
+     * @return a List of users from the table.
+     */
+    private List<User> getUsers(ResultSet r_set) {
+        List<User> users = new LinkedList<>();
+
+        // return an empty list if query didn't return anything
+        if (r_set == null) {
+            return users;
+        }
+
+        User user;
+        while ((user = getUser(r_set)) != null) {
+            users.add(user);
+        }
+
+        return users;
+    }
+
+    /**
+     * Private method for retrieving a edu.wpi.cs3733d18.teamS.user from a edu.wpi.cs3733d18.teamS.database query.
+     *
+     * @param r_set The ResultSet containing a single table entry.
+     * @return a User object corresponding to the single table entry.
+     */
+    private User getUser(ResultSet r_set) {
+        try {
+            // if we don't have anything in the result set
+            if (r_set == null || !r_set.next()) {
+                return null;
+            }
+
+            // extract fields from result set and store in edu.wpi.cs3733d18.teamS.user object
+            long id = r_set.getLong("user_id");
+            String username = r_set.getString("username");
+            String password = r_set.getString("password");
+            String first_name = r_set.getString("first_name");
+            String last_name = r_set.getString("last_name");
+            User.user_type user_type = User.user_type.valueOf(r_set.getString("user_type"));
+            boolean can_mod_map = r_set.getBoolean("can_mod_map");
+
+            User user = new User(username, password, first_name, last_name, user_type, can_mod_map);
+            user.setUserID(id);
+
+            return user;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return null;
     }
 
     // ---------------- DEVICE METHODS --------------- //
@@ -317,6 +475,20 @@ public class Storage {
         // configure database and connect
         this.database = database;
         database.connect();
+
+        if (!database.doesTableExist("USERS")) {
+            database.createTable("USERS", new String[]{
+                    String.format("%s BIGINT PRIMARY KEY GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1)", "user_id"),
+                    String.format("%s VARCHAR (100)", "username"),
+                    String.format("%s VARCHAR (100)", "password"),
+                    String.format("%s VARCHAR (100)", "first_name"),
+                    String.format("%s VARCHAR (100)", "last_name"),
+                    String.format("%s VARCHAR (16)", "user_type"),
+                    String.format("%s BOOLEAN", "can_mod_map")
+            });
+
+            User.generateInitialUsers();
+        }
 
         if (!database.doesTableExist("DEVICES")) {
             database.createTable("DEVICES", new String[]{
