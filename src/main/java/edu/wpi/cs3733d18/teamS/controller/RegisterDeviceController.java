@@ -12,6 +12,13 @@ import javafx.scene.input.KeyEvent;
 import java.util.LinkedList;
 import java.util.List;
 
+
+/**
+ * The controller for the registered devices.
+ * @author Joseph Turcotte
+ * @version %I%, %G%
+ * Date: April 16, 2018
+ */
 public class RegisterDeviceController {
 
     @FXML
@@ -29,6 +36,9 @@ public class RegisterDeviceController {
     @FXML
     private Button back_btn;
 
+    /**
+     * Populates the name boxes with the data from the database.
+     */
     public void populateNamesBox() {
 
         List<Device> devices = Storage.getInstance().getAllDevices();
@@ -43,6 +53,9 @@ public class RegisterDeviceController {
         names_selector.getItems().addAll(owners);
     }
 
+    /**
+     * Populates the type box with information from the database.
+     */
     public void populateTypesBox() {
         List<Device> devices = Storage.getInstance().getAllDevices();
         List<String> device_types = new LinkedList<>();
@@ -56,6 +69,9 @@ public class RegisterDeviceController {
         types_selector.getItems().addAll(device_types);
     }
 
+    /**
+     * Creates a new device and adds it to the database.
+     */
     public void createDevice() {
         Device d = new Device(
                 device_name.getText(),
@@ -70,6 +86,9 @@ public class RegisterDeviceController {
         alert.showAndWait();
     }
 
+    /**
+     * Initializes the scene.
+     */
     public void initialize() {
         populateNamesBox();
         populateTypesBox();

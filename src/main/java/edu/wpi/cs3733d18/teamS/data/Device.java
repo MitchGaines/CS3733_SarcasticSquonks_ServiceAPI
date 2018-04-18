@@ -2,25 +2,31 @@ package edu.wpi.cs3733d18.teamS.data;
 
 import edu.wpi.cs3733d18.teamS.database.Storage;
 
+/**
+ * A class that manages registered devices and deals with the methods related to them.
+ * @author Joseph Turcotte
+ * @version %I%, %G%
+ * Date: April 16, 2018
+ */
 public class Device {
 
     /**
-     * Name of the device
+     * Name of the device.
      */
     private String device_name;
 
     /**
-     * Owner of the device
+     * Owner of the device.
      */
     private String owner;
 
     /**
-     * Type of the device
+     * Type of the device.
      */
     private String device_type;
 
     /**
-     * Constructor
+     * Constructs a Device by taking in a name, an owner, and the device type.
      * @param device_name name of the device
      * @param owner owner of the device
      * @param device_type type of the device
@@ -32,7 +38,7 @@ public class Device {
     }
 
     /**
-     * Generates a dummy list of devices
+     * Generates a dummy list of devices.
      */
     public static void generateInitialDevices() {
         Storage storage = Storage.getInstance();
