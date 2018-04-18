@@ -14,8 +14,7 @@ import java.io.IOException;
 /**
  * The main class
  * @author Joseph Turcotte
- * @version %I%, %G%
- * Date: April 16, 2018
+ * @version 1.1, April 16, 2018
  */
 public class Main extends Application {
 
@@ -50,7 +49,7 @@ public class Main extends Application {
     /**
      * Starts the scene.
      * @param primary_stage the initial stage.
-     * @throws Exception
+     * @throws Exception if the program cannot start.
      */
     @Override
     public void start(Stage primary_stage) throws Exception {

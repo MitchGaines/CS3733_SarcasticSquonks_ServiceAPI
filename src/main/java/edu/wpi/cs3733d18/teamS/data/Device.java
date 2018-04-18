@@ -5,8 +5,7 @@ import edu.wpi.cs3733d18.teamS.database.Storage;
 /**
  * A class that manages registered devices and deals with the methods related to them.
  * @author Joseph Turcotte
- * @version %I%, %G%
- * Date: April 16, 2018
+ * @version 1.1, April 16, 2018
  */
 public class Device {
 

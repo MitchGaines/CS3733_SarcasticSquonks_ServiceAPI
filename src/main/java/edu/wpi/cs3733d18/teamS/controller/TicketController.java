@@ -15,8 +15,7 @@ import java.util.List;
 /**
  * Controller for the tickets.
  * @author Joseph Turcotte
- * @version %I%, %G%
- * Date: April 16, 2018
+ * @version 1.1, April 16, 2018
  */
 public class TicketController {
 

@@ -16,8 +16,7 @@ import java.util.List;
 /**
  * The controller for the registered devices.
  * @author Joseph Turcotte
- * @version %I%, %G%
- * Date: April 16, 2018
+ * @version 1.1, April 16, 2018
  */
 public class RegisterDeviceController {
 
