@@ -1,4 +1,4 @@
-package edu.wpi.cs3733d18.teamS.database;
+package edu.wpi.cs3733d18.SquonksAPI.database;
 
 import org.apache.derby.jdbc.EmbeddedDriver;
 
@@ -26,7 +26,7 @@ public class ApacheDatabase implements IDatabase {
     /**
      * Stores a String for the name of the database.
      */
-    private String db_name; // name of the edu.wpi.cs3733d18.teamS.database
+    private String db_name; // name of the edu.wpi.cs3733d18.SquonksAPI.database
 
     /**
      * Stores whether the connection is open.
@@ -65,7 +65,7 @@ public class ApacheDatabase implements IDatabase {
 
         //System.out.println("Java DB driver registered!");
 
-        // try to connect to edu.wpi.cs3733d18.teamS.database with given name
+        // try to connect to edu.wpi.cs3733d18.SquonksAPI.database with given name
         try {
             DriverManager.registerDriver(new EmbeddedDriver());
             connection = DriverManager.getConnection("jdbc:derby:" + db_name + ";create=true");
@@ -79,7 +79,7 @@ public class ApacheDatabase implements IDatabase {
             // open the connection
             is_open = true;
         } catch (SQLException e) {
-            System.out.println("Could not connect to edu.wpi.cs3733d18.teamS.database: " + db_name + "\n" +
+            System.out.println("Could not connect to edu.wpi.cs3733d18.SquonksAPI.database: " + db_name + "\n" +
                     e.getMessage());
             e.printStackTrace();
         }
@@ -130,7 +130,7 @@ public class ApacheDatabase implements IDatabase {
         try {
             DatabaseMetaData md = connection.getMetaData();
 
-            // retrieve all of the tables from the connection edu.wpi.cs3733d18.teamS.database
+            // retrieve all of the tables from the connection edu.wpi.cs3733d18.SquonksAPI.database
             ResultSet rs = md.getTables(null, null, "%", null);
 
             while (rs.next()) {

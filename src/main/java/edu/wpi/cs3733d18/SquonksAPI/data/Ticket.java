@@ -1,6 +1,6 @@
-package edu.wpi.cs3733d18.teamS.data;
+package edu.wpi.cs3733d18.SquonksAPI.data;
 
-import edu.wpi.cs3733d18.teamS.database.Storage;
+import edu.wpi.cs3733d18.SquonksAPI.database.Storage;
 
 /**
  * ServiceRequest class for computer service requests.

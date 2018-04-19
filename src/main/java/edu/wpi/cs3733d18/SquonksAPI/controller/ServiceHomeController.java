@@ -1,14 +1,11 @@
-package edu.wpi.cs3733d18.teamS.controller;
+package edu.wpi.cs3733d18.SquonksAPI.controller;
 
-import edu.wpi.cs3733d18.teamS.data.Ticket;
-import edu.wpi.cs3733d18.teamS.database.Storage;
+import edu.wpi.cs3733d18.SquonksAPI.data.Ticket;
+import edu.wpi.cs3733d18.SquonksAPI.database.Storage;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-
-import java.io.IOException;
 
 /**
  * Service API home controller
@@ -112,11 +109,11 @@ public class ServiceHomeController {
 
     @FXML
     void onRequestClick() {
-        Main.switchScenes("Service request", "/TicketPage.fxml");
+        SquonksAPI.switchScenes("Service request", "/TicketPage.fxml");
     }
 
     @FXML
     void onRegisterClick() {
-        Main.switchScenes("Register device", "/RegisterDevicePage.fxml");
+        SquonksAPI.switchScenes("Register device", "/RegisterDevicePage.fxml");
     }
 }
