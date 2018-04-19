@@ -1,4 +1,4 @@
-package edu.wpi.cs3733d18.teamS.internationalization;
+package edu.wpi.cs3733d18.SquonksAPI.internationalization;
 
 import java.util.Locale;
 import java.util.ResourceBundle;
@@ -7,7 +7,7 @@ public class AllText {
     /**
      * Stores a Resource Bundle
      */
-    private static ResourceBundle bundle = ResourceBundle.getBundle("all_text", new Locale("en"));
+    private static ResourceBundle bundle = ResourceBundle.getBundle("all_text_api", new Locale("en"));
 
     /**
      * Stores a String for the Language abbreviation.
@@ -53,7 +53,7 @@ public class AllText {
      */
     public static void changeLanguage(String localeStr) {
         language = localeStr;
-        bundle = ResourceBundle.getBundle("all_text", new Locale(localeStr));
+        bundle = ResourceBundle.getBundle("all_text_api", new Locale(localeStr));
     }
 
 }
