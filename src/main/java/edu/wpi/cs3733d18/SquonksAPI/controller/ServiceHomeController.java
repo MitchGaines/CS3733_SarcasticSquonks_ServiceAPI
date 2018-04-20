@@ -1,6 +1,5 @@
 package edu.wpi.cs3733d18.SquonksAPI.controller;
 
-import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
 import edu.wpi.cs3733d18.SquonksAPI.internationalization.AllText;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
