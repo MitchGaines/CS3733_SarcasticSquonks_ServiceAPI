@@ -1,10 +1,13 @@
 package edu.wpi.cs3733d18.SquonksAPI.data;
 
 import edu.wpi.cs3733d18.SquonksAPI.database.Storage;
+import org.joda.time.DateTime;
+import org.joda.time.DateTimeConstants;
 
 import java.util.Arrays;
 import java.util.Base64;
 import java.util.Objects;
+import java.util.stream.Stream;
 
 /**
  * User.java
@@ -193,5 +196,30 @@ public class User {
     }
 
     public enum user_type {DOCTOR, ADMIN_STAFF, REGULAR_STAFF}
+
+    ///////////////////// Fancy Reports ///////////////////////
+
+//    private Stream<Ticket> requestedInRange(DateTime start, DateTime end) {
+//        return Storage.getInstance().getAllTickets().stream()
+//                .filter(e -> e.getRequestedDate().toDateTime().isBefore(end.toDateTime().toInstant()) && e.getRequestedDate().toDateTime().isAfter(start.toDateTime()) && canFulfill(e));
+//    }
+//
+//    public long getNumFulfillableRequests(DateTime start, DateTime end) {
+//        return requestedInRange(start, end).count();
+//    }
+//
+//    public  long getNumFulfilledRequests(DateTime start, DateTime end) {
+//        return Storage.getInstance().getAllTickets().stream()
+//                .filter(e -> e.isFulfilled() && e.getFulfilledDate().toDateTime().isBefore(end.toDateTime().toInstant()) && e.getFulfilledDate().toDateTime().isAfter(start.toDateTime()) && e.getFulfiller().getUserID() == user_id)
+//                .count();
+//    }
+//
+//    public double getAverageFulfillmentTimeInHours(DateTime start, DateTime end) {
+//        return requestedInRange(start, end)
+//                .filter(Ticket::isFulfilled)
+//                .mapToDouble(e -> ((double) (e.getFulfilledDate().getMillis() - e.getRequestedDate().getMillis())) / DateTimeConstants.MILLIS_PER_HOUR)
+//                .average()
+//                .orElse(0);
+//    }
 }
 

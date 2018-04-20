@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<GridPane fx:id="sidebar" alignment="CENTER" gridLinesVisible="true" prefHeight="400.0" prefWidth="150.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733d18.SquonksAPI.controller.TicketSidebarController">
+  <columnConstraints>
+    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+  </columnConstraints>
+  <rowConstraints>
+    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+  </rowConstraints>
+   <children>
+      <Label fx:id="view_tickets" alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#onViewTicketsClick" prefHeight="1000.0" prefWidth="150.0" style="-fx-background-color: #173e43;" text="View Tickets" textAlignment="CENTER" textFill="WHITE" wrapText="true" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+         <font>
+            <Font size="23.0" />
+         </font>
+      </Label>
+      <Label fx:id="new_ticket" alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#onNewTicketClick" prefHeight="1000.0" prefWidth="161.0" style="-fx-background-color: #173e43;" text="New Ticket" textAlignment="CENTER" textFill="WHITE" wrapText="true" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
+         <font>
+            <Font size="23.0" />
+         </font>
+      </Label>
+      <Label fx:id="new_device" alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#onNewDeviceClick" prefHeight="1000.0" prefWidth="161.0" style="-fx-background-color: #173e43;" text="New Device" textAlignment="CENTER" textFill="WHITE" wrapText="true" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.vgrow="ALWAYS">
+         <font>
+            <Font size="23.0" />
+         </font>
+      </Label>
+
+      <Label fx:id="view_users" alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#onViewUsersClick" prefHeight="1000.0" prefWidth="161.0" style="-fx-background-color: #173e43;" text="View Users" textAlignment="CENTER" textFill="WHITE" wrapText="true" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" GridPane.vgrow="ALWAYS">
+         <font>
+            <Font size="23.0" />
+         </font>
+      </Label>
+      <Label fx:id="view_reports" alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#onViewReportsClick" prefHeight="1000.0" prefWidth="150.0" style="-fx-background-color: #173e43;" text="View Reports" textAlignment="CENTER" textFill="WHITE" wrapText="true" GridPane.hgrow="ALWAYS" GridPane.rowIndex="4" GridPane.vgrow="ALWAYS">
+         <font>
+            <Font size="23.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="1000.0" prefWidth="161.0" style="-fx-background-color: #173e43;" textFill="WHITE" wrapText="true" GridPane.hgrow="ALWAYS" GridPane.rowIndex="5" GridPane.vgrow="ALWAYS">
+         <font>
+            <Font size="23.0" />
+         </font>
+      </Label>
+   </children>
+</GridPane>
