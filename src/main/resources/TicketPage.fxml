@@ -9,7 +9,6 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Text?>
@@ -26,7 +25,7 @@
                         <Insets top="30.0" />
                     </StackPane.margin>
                 </ImageView>
-            <GridPane prefHeight="400.0" prefWidth="1174.0">
+            <GridPane prefHeight="400.0" prefWidth="1174.0" style="-fx-background-color: #dddfd4;">
                <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -54,14 +53,6 @@
                         <Insets right="10.0" />
                      </GridPane.margin>
                   </Text>
-                  <JFXButton fx:id="back_btn" buttonType="RAISED" onMouseClicked="#onBackClick" style="-fx-font-size: 18; -fx-background-color: #ffffff;" text="%go_back" GridPane.columnIndex="1" GridPane.halignment="RIGHT">
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                     <GridPane.margin>
-                        <Insets right="20.0" />
-                     </GridPane.margin>
-                  </JFXButton>
                   <JFXComboBox fx:id="devices_list" style="-fx-font-size: 18;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                   <JFXComboBox fx:id="problem_list" style="-fx-font-size: 18;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                   <JFXTextField fx:id="additional_info" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="257.0" style="-fx-font-size: 18;" GridPane.columnIndex="1" GridPane.rowIndex="3" />
@@ -74,14 +65,4 @@
             </children>
         </StackPane>
     </center>
-    <bottom>
-        <HBox alignment="BOTTOM_LEFT" prefHeight="50.0" prefWidth="273.0" spacing="20.0" BorderPane.alignment="CENTER">
-            <padding>
-                <Insets bottom="10.0" left="10.0" />
-            </padding>
-        </HBox>
-    </bottom>
-   <top>
-      <BorderPane prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #4863A0;" BorderPane.alignment="CENTER" />
-   </top>
 </BorderPane>

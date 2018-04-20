@@ -1,11 +1,15 @@
 package edu.wpi.cs3733d18.SquonksAPI.controller;
 
-import edu.wpi.cs3733d18.SquonksAPI.data.Ticket;
-import edu.wpi.cs3733d18.SquonksAPI.database.Storage;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.collections.FXCollections;
+import edu.wpi.cs3733d18.SquonksAPI.internationalization.AllText;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.control.*;
+import javafx.scene.layout.BorderPane;
+
+import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 /**
  * Service API home controller
@@ -17,103 +21,52 @@ import javafx.scene.control.*;
 public class ServiceHomeController {
 
     @FXML
-    private TableView<Ticket> log_table;
-
+    BorderPane main_pane;
     @FXML
-    private Button create_request_btn;
-
+    Label time;
     @FXML
-    private Button resolve_ticket_btn;
-
+    protected TicketSidebarController ticketSidebarController;
     @FXML
-    private Button register_device_btn;
+    protected ViewTicketsController viewTicketsController;
 
-    private Ticket selected_ticket;
-
-    /**
-     * Initialize the home page controller for the service API.
-     */
-    public void initialize() {
-
-        populateTable();
+    public void viewTickets() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ViewTickets.fxml"), AllText.getBundle());
+        Parent root = loader.load();
+        viewTicketsController = loader.getController();
+        main_pane.setCenter(root);
     }
 
-    public void populateTable() {
-        log_table.getColumns().removeAll(log_table.getColumns());
-
-        TableColumn<Ticket, String> numberCol = new TableColumn("Ticket Number");
-        TableColumn<Ticket, String> requesterCol = new TableColumn("Requester");
-        TableColumn<Ticket, String> fulfillerCol = new TableColumn("Fulfiller");
-        TableColumn<Ticket, String> descriptionCol = new TableColumn("Description");
-        TableColumn<Ticket, String> locationCol = new TableColumn("Location");
-
-        numberCol.prefWidthProperty().bind(log_table.widthProperty().multiply(0.2));
-        requesterCol.prefWidthProperty().bind(log_table.widthProperty().multiply(0.2));
-        fulfillerCol.prefWidthProperty().bind(log_table.widthProperty().multiply(0.2));
-        descriptionCol.prefWidthProperty().bind(log_table.widthProperty().multiply(0.2));
-        locationCol.prefWidthProperty().bind(log_table.widthProperty().multiply(0.2));
-
-        log_table.getColumns().addAll(numberCol, requesterCol, fulfillerCol, descriptionCol, locationCol);
-
-        numberCol.setCellValueFactory(e -> {
-            SimpleStringProperty p = new SimpleStringProperty();
-            p.set(String.valueOf(e.getValue().getID()));
-            return p;
-        });
-
-        requesterCol.setCellValueFactory(e -> {
-            SimpleStringProperty p = new SimpleStringProperty();
-            p.set(e.getValue().getRequesterName());
-            return p;
-        });
-
-        fulfillerCol.setCellValueFactory(e -> {
-            SimpleStringProperty p = new SimpleStringProperty();
-            p.set(e.getValue().getFulfillerName());
-            return p;
-        });
-
-        descriptionCol.setCellValueFactory(e -> {
-            SimpleStringProperty p = new SimpleStringProperty();
-            p.set(e.getValue().getDescription());
-            return p;
-        });
-
-        locationCol.setCellValueFactory(e -> {
-            SimpleStringProperty p = new SimpleStringProperty();
-            p.set(e.getValue().getLocation());
-            return p;
-        });
-
-        log_table.setItems(FXCollections.observableArrayList(Storage.getInstance().getAllTickets()));
+    public void newTicket() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/TicketPage.fxml"), AllText.getBundle());
+        Parent root = loader.load();
+        main_pane.setCenter(root);
     }
 
-    @FXML
-    void onTicketChoose() {
-        selected_ticket = log_table.getSelectionModel().getSelectedItem();
+    public void newDevice() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/RegisterDevicePage.fxml"), AllText.getBundle());
+        Parent root = loader.load();
+        main_pane.setCenter(root);
     }
 
-    @FXML
-    void onResolveClick() {
-        if(selected_ticket != null) {
-            Storage.getInstance().deleteTicket(selected_ticket);
-            populateTable();
-        } else {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("No Ticket Selected");
-            alert.setHeaderText("No Ticket Selected");
-            alert.setContentText("No ticket was selected.");
-            alert.showAndWait();
-        }
+    public void showUsers() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ViewUsers.fxml"), AllText.getBundle());
+        Parent root = loader.load();
+        main_pane.setCenter(root);
     }
 
-    @FXML
-    void onRequestClick() {
-        SquonksAPI.switchScenes("Service request", "/TicketPage.fxml");
+    public void showReports() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ViewUserReports.fxml"), AllText.getBundle());
+        Parent root = loader.load();
+        main_pane.setCenter(root);
     }
 
-    @FXML
-    void onRegisterClick() {
-        SquonksAPI.switchScenes("Register device", "/RegisterDevicePage.fxml");
+    public void initialize() throws IOException {
+        ticketSidebarController.setParent(this);
+        viewTicketsController.setParent(this);
+        viewTickets();
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm");
+        LocalDateTime now = LocalDateTime.now();
+//        time.setText(dtf.format(now));
+        //dismissEmergency();
     }
 }

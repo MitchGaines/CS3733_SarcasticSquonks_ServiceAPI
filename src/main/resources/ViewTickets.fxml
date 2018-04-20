@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.text.Text?>
+
+<VBox alignment="TOP_CENTER" prefHeight="570.0" prefWidth="1200.0" spacing="50.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733d18.SquonksAPI.controller.ViewTicketsController">
+    <children>
+        <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 23;" text="%pending_ticket" />
+        <TableView fx:id="log_table" maxHeight="-Infinity" maxWidth="-Infinity" onMouseClicked="#onTicketChoose" prefHeight="430.0" prefWidth="1091.0">
+            <columns>
+                <TableColumn prefWidth="75.0" text="C1" />
+                <TableColumn prefWidth="75.0" text="C2" />
+            </columns>
+        </TableView>
+        <GridPane prefHeight="63.0" prefWidth="1200.0">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            </rowConstraints>
+            <children>
+
+                <JFXButton fx:id="resolve_ticket_btn" buttonType="RAISED" onMouseClicked="#onResolveClick" style="-fx-font-size: 18; -fx-background-color: #ffffff;" text="Resolve Ticket" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
+                <JFXButton fx:id="register_device_btn" buttonType="RAISED" onMouseClicked="#onRegisterClick" style="-fx-background-color: #ffffff; -fx-font-size: 18;" text="%register_new_device" GridPane.halignment="RIGHT" />
+                <JFXButton fx:id="create_request_btn" buttonType="RAISED" onMouseClicked="#onRequestClick" style="-fx-font-size: 18; -fx-background-color: #ffffff;" text="%create_ticket" GridPane.columnIndex="2" GridPane.halignment="LEFT" />
+            </children>
+        </GridPane>
+    </children>
+    <StackPane.margin>
+        <Insets top="40.0" />
+    </StackPane.margin>
+</VBox>
