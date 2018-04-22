@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
@@ -29,10 +26,9 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             </rowConstraints>
             <children>
-
-                <JFXButton fx:id="resolve_ticket_btn" buttonType="RAISED" onMouseClicked="#onResolveClick" style="-fx-font-size: 18; -fx-background-color: #ffffff;" text="Resolve Ticket" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
-                <JFXButton fx:id="register_device_btn" buttonType="RAISED" onMouseClicked="#onRegisterClick" style="-fx-background-color: #ffffff; -fx-font-size: 18;" text="%register_new_device" GridPane.halignment="RIGHT" />
-                <JFXButton fx:id="create_request_btn" buttonType="RAISED" onMouseClicked="#onRequestClick" style="-fx-font-size: 18; -fx-background-color: #ffffff;" text="%create_ticket" GridPane.columnIndex="2" GridPane.halignment="LEFT" />
+                <JFXButton fx:id="pathfind_btn" buttonType="RAISED" onMouseClicked="#onPathfindClick" style="-fx-background-color: #ffffff; -fx-font-size: 18;" text="%pathfind_to_ticket" GridPane.halignment="LEFT" />
+                <JFXButton fx:id="resolve_ticket_btn" buttonType="RAISED" onMouseClicked="#onResolveClick" style="-fx-font-size: 18; -fx-background-color: #ffffff;" text="%resolve_ticket" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
+                <JFXButton fx:id="undo" buttonType="RAISED" onMouseClicked="#onUndoClick" style="-fx-background-color: #ffffff; -fx-font-size: 18;" text="%undo" GridPane.columnIndex="2" GridPane.halignment="RIGHT" />
             </children>
         </GridPane>
     </children>

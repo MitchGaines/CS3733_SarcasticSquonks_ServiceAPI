@@ -78,7 +78,8 @@ public class ViewUsersController {
             if (type_user.getValue() == User.user_type.ADMIN_STAFF) {
                 can_mod = true;
             }
-            User new_user = new User(username_field.getText(), password_field.getText(), first_name_field.getText(), last_name_field.getText(), type_user.getValue(), can_mod);
+            User new_user = new User(username_field.getText(), password_field.getText(), first_name_field.getText(), last_name_field.getText(),
+                    first_name_field.getText() + last_name_field.getText(), type_user.getValue(), can_mod);
             Storage.getInstance().saveUser(new_user);
             populateUserTable();
             first_name_field.setText("");

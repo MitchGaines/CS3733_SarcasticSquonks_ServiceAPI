@@ -2,6 +2,7 @@ package edu.wpi.cs3733d18.SquonksAPI.controller;
 
 
 import edu.wpi.cs3733d18.SquonksAPI.data.Device;
+import edu.wpi.cs3733d18.SquonksAPI.data.Node;
 import edu.wpi.cs3733d18.SquonksAPI.data.Ticket;
 import edu.wpi.cs3733d18.SquonksAPI.database.Storage;
 import javafx.fxml.FXML;
@@ -20,10 +21,13 @@ import java.util.List;
 public class TicketController {
 
     @FXML
-    private ComboBox devices_list;
+    private ComboBox<Device> devices_list;
 
     @FXML
     private ComboBox problem_list;
+
+    @FXML
+    private ComboBox<Node> location_list;
 
     @FXML
     private TextField additional_info;
@@ -38,17 +42,10 @@ public class TicketController {
      * Populates the Device box with all of the devices in the database.
      */
     public void populateDevicesBox() {
-
         List<Device> devices = Storage.getInstance().getAllDevices();
-        List<String> device_names = new LinkedList<>();
-        int length = devices.size();
-        for (int i = 0; i < length; i++) {
-            device_names.add(devices.get(i).getDeviceName());
-        }
-
         devices_list.valueProperty().set(null);
         devices_list.getItems().removeAll(devices_list.getItems());
-        devices_list.getItems().addAll(device_names);
+        devices_list.getItems().addAll(devices);
     }
 
     /**
@@ -60,6 +57,7 @@ public class TicketController {
         problems.add("Computer froze.");
         problems.add("Software issue.");
         problems.add("Eclipse is terrible!");
+        problems.add("Other");
 
         problem_list.valueProperty().set(null);
         problem_list.getItems().removeAll(problem_list.getItems());
@@ -67,10 +65,26 @@ public class TicketController {
     }
 
     /**
+     * Populates the location box with all of the locations in the database
+     */
+    @FXML
+    public void populateLocationsBox() {
+        location_list.valueProperty().set(null);
+        location_list.getItems().removeAll(location_list.getItems());
+        location_list.getItems().addAll(Storage.getInstance().getAllNodes());
+    }
+
+    /**
      * Submits a request.
      */
     public void submitRequest() {
-        Ticket t = new Ticket("doctor doctor", "Techie Tom", additional_info.getText(), "3rd Floor");
+        Ticket t = new Ticket(
+                devices_list.getSelectionModel().getSelectedItem().getOwner().getFullName(),
+                "Techie Tom",
+                additional_info.getText(),
+                location_list.getSelectionModel().getSelectedItem(),
+                false
+        );
         Storage.getInstance().saveTicket(t);
 
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -86,11 +100,7 @@ public class TicketController {
     public void initialize() {
         populateDevicesBox();
         populateProblemsBox();
-    }
-
-    @FXML
-    void onBackClick() {
-        SquonksAPI.switchScenes("Brigham and Women's", "/ServiceHomePage.fxml");
+        populateLocationsBox();
     }
 
 }

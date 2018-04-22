@@ -16,15 +16,13 @@ public class ViewTicketsController {
     private TableView<Ticket> log_table;
 
     @FXML
-    private Button create_request_btn;
+    private Button pathfind_btn;
 
     @FXML
     private Button resolve_ticket_btn;
 
-    @FXML
-    private Button register_device_btn;
-
     private Ticket selected_ticket;
+    private Ticket most_recent_ticket;
     private ServiceHomeController parent;
 
     /**
@@ -77,11 +75,11 @@ public class ViewTicketsController {
 
         locationCol.setCellValueFactory(e -> {
             SimpleStringProperty p = new SimpleStringProperty();
-            p.set(e.getValue().getLocation());
+            p.set(e.getValue().getLocation().getLongName());
             return p;
         });
 
-        log_table.setItems(FXCollections.observableArrayList(Storage.getInstance().getAllTickets()));
+        log_table.setItems(FXCollections.observableArrayList(Storage.getInstance().getAllUnfulfilledTickets()));
     }
 
     @FXML
@@ -92,7 +90,9 @@ public class ViewTicketsController {
     @FXML
     void onResolveClick() {
         if (selected_ticket != null) {
-            Storage.getInstance().deleteTicket(selected_ticket);
+            most_recent_ticket = selected_ticket;
+            selected_ticket.setIsFulfilled(true);
+            Storage.getInstance().updateTicket(selected_ticket);
             populateTable();
         } else {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -104,13 +104,18 @@ public class ViewTicketsController {
     }
 
     @FXML
-    void onRequestClick() {
-        SquonksAPI.switchScenes("Service request", "/TicketPage.fxml");
+    void onPathfindClick() {
+        // empty for now
     }
 
     @FXML
-    void onRegisterClick() {
-        SquonksAPI.switchScenes("Register device", "/RegisterDevicePage.fxml");
+    void onUndoClick() {
+        if (most_recent_ticket != null) {
+            most_recent_ticket.setIsFulfilled(false);
+            Storage.getInstance().updateTicket(most_recent_ticket);
+            populateTable();
+            most_recent_ticket = null;
+        }
     }
 
     public void setParent(ServiceHomeController home_controller) {

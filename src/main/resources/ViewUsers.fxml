@@ -17,7 +17,7 @@
 
 <BorderPane xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733d18.SquonksAPI.controller.ViewUsersController">
     <center>
-        <GridPane alignment="TOP_CENTER" minHeight="300.0" BorderPane.alignment="TOP_CENTER">
+        <GridPane alignment="TOP_CENTER" minHeight="300.0" style="-fx-background-color: #dddfd4;" BorderPane.alignment="TOP_CENTER">
             <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -38,8 +38,8 @@
                         </TableView>
                         <HBox alignment="CENTER" prefHeight="22.0" prefWidth="300.0" spacing="10.0">
                             <children>
-                                <JFXButton fx:id="delete_user_btn" alignment="CENTER" buttonType="RAISED" onAction="#onDeleteUser" style="-fx-font-size: 18; -fx-background-color: #B7B8B6;" text="%delete_user" />
-                                <JFXButton fx:id="modify_user" alignment="CENTER" buttonType="RAISED" onAction="#onModifyUser" style="-fx-font-size: 18; -fx-background-color: #B7B8B6;" text="%modify_user" />
+                                <JFXButton fx:id="delete_user_btn" alignment="CENTER" buttonType="RAISED" onAction="#onDeleteUser" style="-fx-font-size: 18; -fx-background-color: #ffffff;" text="%delete_user" />
+                                <JFXButton fx:id="modify_user" alignment="CENTER" buttonType="RAISED" onAction="#onModifyUser" style="-fx-font-size: 18; -fx-background-color: #ffffff;" text="%modify_user" />
                             </children>
                             <VBox.margin>
                                 <Insets top="10.0" />
@@ -75,7 +75,7 @@
                                     </font>
                                 </JFXTextField>
                                 <JFXComboBox fx:id="type_user" promptText="%type_of_user" style="-fx-font-size: 18;" />
-                                <JFXButton fx:id="add_user_btn" buttonType="RAISED" onAction="#onAddUser" style="-fx-font-size: 18; -fx-background-color: #B7B8B6;" text="%add_user" />
+                                <JFXButton fx:id="add_user_btn" buttonType="RAISED" onAction="#onAddUser" style="-fx-font-size: 18; -fx-background-color: #ffffff;" text="%add_user" />
                             </children>
                         </VBox>
                         <VBox fx:id="delete_user_box" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="20.0" visible="false">
