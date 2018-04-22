@@ -65,7 +65,7 @@ public class RegisterDeviceController {
         int length = devices.size();
         for (int i = 0; i < length; i++) {
             if (!device_types.contains(devices.get(i).getDeviceType())) {
-                device_types.add(devices.get(i).getDeviceType());
+                device_types.add(devices.get(i).getDeviceType().toString());
             }
         }
         types_selector.valueProperty().set(null);
@@ -79,8 +79,8 @@ public class RegisterDeviceController {
     public void createDevice() {
         Device d = new Device(
                 device_name.getText(),
-                names_selector.getSelectionModel().getSelectedItem(),
-                types_selector.getSelectionModel().getSelectedItem());
+                Storage.getInstance().getUserByName(names_selector.getSelectionModel().getSelectedItem()),
+                Device.device_type.valueOf(types_selector.getSelectionModel().getSelectedItem()));
         Storage.getInstance().saveDevice(d);
 
         Alert alert = new Alert(Alert.AlertType.INFORMATION);

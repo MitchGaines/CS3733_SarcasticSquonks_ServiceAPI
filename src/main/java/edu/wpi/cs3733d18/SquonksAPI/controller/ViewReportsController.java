@@ -65,7 +65,6 @@ public class ViewReportsController extends ServiceHomeController {
 
     private void populateReportTypes() {
         report_type_menu.getItems().removeAll(report_type_menu.getItems());
-        //todo: i18n
         for (String key : REPORT_TYPE_KEYS) {
             report_type_menu.getItems().add(AllText.get(key));
         }
@@ -101,7 +100,7 @@ public class ViewReportsController extends ServiceHomeController {
     }
 
     public void onGoButton() {
-//        generateChart();
+        generateChart();
         generateTable();
         onToggle();
     }
@@ -116,57 +115,57 @@ public class ViewReportsController extends ServiceHomeController {
         }
     }
 
-//    public void generateChart() {
-//        if (getStartTime() == null || getEndTime() == null || report_type_menu.getSelectionModel().isEmpty()) {
-//            return;
-//        }
-//        int selected_report_type = report_type_menu.getSelectionModel().getSelectedIndex();
-//        final CategoryAxis x_axis = new CategoryAxis();
-//        final NumberAxis y_axis = new NumberAxis();
-//        BarChart<String, Number> chart = new BarChart<>(x_axis, y_axis);
-//        chart.setTitle(AllText.get(REPORT_TYPE_KEYS[selected_report_type]));
-//        x_axis.setLabel(AllText.get("service_type"));
-//        y_axis.setLabel(AllText.get(REPORT_TYPE_UNIT_KEYS[selected_report_type]));
-//
-//
-//        XYChart.Series series = new XYChart.Series();
-//        ArrayList<XYChart.Data> data_list = new ArrayList<>();
-//
-//        for (User user : user_list.getSelectionModel().getSelectedItems()) {
-//            if (user == null) {
-//                continue;
-//            }
-//            if (selected_report_type == 0) {
-//                XYChart.Data data = new XYChart.Data(user.toString(), user.getNumFulfillableRequests(getStartTime(), getEndTime()));
-//                data_list.add(data);
-//                series.getData().add(data);
-//            } else if (selected_report_type == 1) {
-//                String users_name = user.toString();
-//                long avg_time = user.getNumFulfilledRequests(getStartTime(), getEndTime());
-//                XYChart.Data data = new XYChart.Data(users_name, avg_time);
-//                series.getData().add(data);
-//                data_list.add(data);
-//            } else if (selected_report_type == 2) {
-//                XYChart.Data data = new XYChart.Data(user.toString(), user.getAverageFulfillmentTimeInHours(getStartTime(), getEndTime()));
-//                data_list.add(data);
-//                series.getData().add(data);
-//            }
-//        }
-//
-//
-//        chart.getData().add(series);
-//
-//
-//        for (int i = 0; i < data_list.size(); i++) {
-//            data_list.get(i).getNode().getStyleClass().add("default-color" + (1 + (i % 7)));
-//            //data_list.get(i).getNode().getStyleClass().add("default-color" + (i % 7));
-//        }
-//
-//        chart.setLegendVisible(false);
-//
-//        this.chart = chart;
-//        empty = false;
-//    }
+    public void generateChart() {
+        if (getStartTime() == null || getEndTime() == null || report_type_menu.getSelectionModel().isEmpty()) {
+            return;
+        }
+        int selected_report_type = report_type_menu.getSelectionModel().getSelectedIndex();
+        final CategoryAxis x_axis = new CategoryAxis();
+        final NumberAxis y_axis = new NumberAxis();
+        BarChart<String, Number> chart = new BarChart<>(x_axis, y_axis);
+        chart.setTitle(AllText.get(REPORT_TYPE_KEYS[selected_report_type]));
+        x_axis.setLabel(AllText.get("service_type"));
+        y_axis.setLabel(AllText.get(REPORT_TYPE_UNIT_KEYS[selected_report_type]));
+
+
+        XYChart.Series series = new XYChart.Series();
+        ArrayList<XYChart.Data> data_list = new ArrayList<>();
+
+        for (User user : user_list.getSelectionModel().getSelectedItems()) {
+            if (user == null) {
+                continue;
+            }
+            if (selected_report_type == 0) {
+                XYChart.Data data = new XYChart.Data(user.toString(), user.getNumFulfillableRequests(getStartTime(), getEndTime()));
+                data_list.add(data);
+                series.getData().add(data);
+            } else if (selected_report_type == 1) {
+                String users_name = user.toString();
+                long avg_time = user.getNumFulfilledRequests(getStartTime(), getEndTime());
+                XYChart.Data data = new XYChart.Data(users_name, avg_time);
+                series.getData().add(data);
+                data_list.add(data);
+            } else if (selected_report_type == 2) {
+                XYChart.Data data = new XYChart.Data(user.toString(), user.getAverageFulfillmentTimeInHours(getStartTime(), getEndTime()));
+                data_list.add(data);
+                series.getData().add(data);
+            }
+        }
+
+
+        chart.getData().add(series);
+
+
+        for (int i = 0; i < data_list.size(); i++) {
+            data_list.get(i).getNode().getStyleClass().add("default-color" + (1 + (i % 7)));
+            //data_list.get(i).getNode().getStyleClass().add("default-color" + (i % 7));
+        }
+
+        chart.setLegendVisible(false);
+
+        this.chart = chart;
+        empty = false;
+    }
 
     public void generateTable() {
         if (getStartTime() == null || getEndTime() == null || report_type_menu.getSelectionModel().isEmpty()) {
@@ -188,13 +187,13 @@ public class ViewReportsController extends ServiceHomeController {
 
         value_col.setCellValueFactory(e -> {
             SimpleStringProperty p = new SimpleStringProperty();
-//            if (selected == 0) {
-//                p.setValue("" + e.getValue().getNumFulfillableRequests(getStartTime(), getEndTime()));
-//            } else if (selected == 1) {
-//                p.setValue("" + e.getValue().getNumFulfilledRequests(getStartTime(), getEndTime()));
-//            } else if (selected == 2) {
-//                p.setValue("" + e.getValue().getAverageFulfillmentTimeInHours(getStartTime(), getEndTime()));
-//            }
+            if (selected == 0) {
+                p.setValue("" + e.getValue().getNumFulfillableRequests(getStartTime(), getEndTime()));
+            } else if (selected == 1) {
+                p.setValue("" + e.getValue().getNumFulfilledRequests(getStartTime(), getEndTime()));
+            } else if (selected == 2) {
+                p.setValue("" + e.getValue().getAverageFulfillmentTimeInHours(getStartTime(), getEndTime()));
+            }
             return p;
         });
 

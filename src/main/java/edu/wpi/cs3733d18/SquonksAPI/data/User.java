@@ -11,7 +11,7 @@ import java.util.stream.Stream;
 
 /**
  * User.java
- * Class for all possible edu.wpi.cs3733d18.SquonksAPI.user types
+ * Class for all possible users
  * Author: Danny Sullivan
  * Date: March 31, 2018
  * Modified by: Joseph Turcotte
@@ -25,10 +25,11 @@ public class User {
     private String username;
     private String first_name;
     private String last_name;
+    private String full_name;
     private byte[] password_salt;
     private byte[] enc_password;
 
-    public User(String username, String password, String first_name, String last_name, user_type type, boolean can_mod_map) {
+    public User(String username, String password, String first_name, String last_name, String full_name, user_type type, boolean can_mod_map) {
         password_salt = new byte[16];
         //new SecureRandom().nextBytes(password_salt);
 
@@ -43,6 +44,7 @@ public class User {
 
         this.first_name = first_name;
         this.last_name = last_name;
+        this.full_name = full_name;
         this.type = type;
         this.can_mod_map = can_mod_map;
     }
@@ -72,14 +74,16 @@ public class User {
         Storage storage = Storage.getInstance();
 
         // generate initial user objects to be stored in the database
-        User u1 = new User("doctor", "doctor", "Doctor", "Danny", User.user_type.DOCTOR, false);
-        User u2 = new User("admin", "admin", "Admin", "Adam", User.user_type.ADMIN_STAFF, true);
-        User u3 = new User("staff", "staff", "Stella", "Staff", User.user_type.REGULAR_STAFF, false);
+        User u1 = new User("doctor", "doctor", "Doctor", "Danny", "Doctor Danny", User.user_type.DOCTOR, false);
+        User u2 = new User("admin", "admin", "Admin", "Adam", "Admin Adam", User.user_type.ADMIN_STAFF, true);
+        User u3 = new User("staff", "staff", "Stella", "Staff", "Stella Staff", User.user_type.REGULAR_STAFF, false);
+        User u4 = new User("techtom", "tech", "Techie", "Tom", "Techie Tom", user_type.REGULAR_STAFF, false);
 
         // save users to database
         storage.saveUser(u1);
         storage.saveUser(u2);
         storage.saveUser(u3);
+        storage.saveUser(u4);
     }
 
     /**
@@ -154,6 +158,14 @@ public class User {
         this.last_name = last_name;
     }
 
+    public String getFullName() {
+        return full_name;
+    }
+
+    public void setFullName(String full_name) {
+        this.full_name = full_name;
+    }
+
     public user_type getType() {
         return type;
     }
@@ -199,27 +211,27 @@ public class User {
 
     ///////////////////// Fancy Reports ///////////////////////
 
-//    private Stream<Ticket> requestedInRange(DateTime start, DateTime end) {
-//        return Storage.getInstance().getAllTickets().stream()
-//                .filter(e -> e.getRequestedDate().toDateTime().isBefore(end.toDateTime().toInstant()) && e.getRequestedDate().toDateTime().isAfter(start.toDateTime()) && canFulfill(e));
-//    }
-//
-//    public long getNumFulfillableRequests(DateTime start, DateTime end) {
-//        return requestedInRange(start, end).count();
-//    }
-//
-//    public  long getNumFulfilledRequests(DateTime start, DateTime end) {
-//        return Storage.getInstance().getAllTickets().stream()
-//                .filter(e -> e.isFulfilled() && e.getFulfilledDate().toDateTime().isBefore(end.toDateTime().toInstant()) && e.getFulfilledDate().toDateTime().isAfter(start.toDateTime()) && e.getFulfiller().getUserID() == user_id)
-//                .count();
-//    }
-//
-//    public double getAverageFulfillmentTimeInHours(DateTime start, DateTime end) {
-//        return requestedInRange(start, end)
-//                .filter(Ticket::isFulfilled)
-//                .mapToDouble(e -> ((double) (e.getFulfilledDate().getMillis() - e.getRequestedDate().getMillis())) / DateTimeConstants.MILLIS_PER_HOUR)
-//                .average()
-//                .orElse(0);
-//    }
+    private Stream<Ticket> requestedInRange(DateTime start, DateTime end) {
+        return Storage.getInstance().getAllTickets().stream()
+                .filter(e -> e.getRequestDate().toDateTime().isBefore(end.toDateTime().toInstant()) && e.getRequestDate().toDateTime().isAfter(start.toDateTime()) /*&& canFulfill(e)*/);
+    }
+
+    public long getNumFulfillableRequests(DateTime start, DateTime end) {
+        return requestedInRange(start, end).count();
+    }
+
+    public long getNumFulfilledRequests(DateTime start, DateTime end) {
+        return Storage.getInstance().getAllTickets().stream()
+                .filter(e -> /*e.isFulfilled() &&*/ e.getFulfillDate().toDateTime().isBefore(end.toDateTime().toInstant()) && e.getFulfillDate().toDateTime().isAfter(start.toDateTime()) /*&& e.getFulfiller().getUserID() == user_id*/)
+                .count();
+    }
+
+    public double getAverageFulfillmentTimeInHours(DateTime start, DateTime end) {
+        return requestedInRange(start, end)
+                /*.filter(Ticket::isFulfilled)*/
+                .mapToDouble(e -> ((double) (e.getFulfillDate().getMillis() - e.getRequestDate().getMillis())) / DateTimeConstants.MILLIS_PER_HOUR)
+                .average()
+                .orElse(0);
+    }
 }
 
