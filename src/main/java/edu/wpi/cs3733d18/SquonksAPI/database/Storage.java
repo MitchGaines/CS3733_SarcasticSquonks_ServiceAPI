@@ -284,6 +284,16 @@ public class Storage {
     }
 
     /**
+     * Gets a list of all IT users in the users table.
+     *
+     * @return a List of IT users in the users table.
+     */
+    public List<User> getAllITUsers() {
+        ResultSet r_set = database.query("USERS", null, "user_type = 'IT_STAFF'", null, null);
+        return getUsers(r_set);
+    }
+
+    /**
      * Gets a list of all users in the users table.
      *
      * @return a List of users in the users table.
@@ -704,9 +714,8 @@ public class Storage {
                     String.format("%s BOOLEAN", "disabled")
             });
 
-            // read from CSV file
-            CSVReader csv_reader = new CSVReader(Storage.getInstance().getDatabase());
-            csv_reader.readCSVFile("csv/SquonksNodes.csv", "NODES");
+            // generate nodes for pathfinding and requesting service
+            Node.generateAllNodes();
         }
 
         if (!database.doesTableExist("USERS")) {

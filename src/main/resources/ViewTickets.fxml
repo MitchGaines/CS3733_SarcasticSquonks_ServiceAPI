@@ -7,7 +7,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.text.Text?>
 
-<VBox alignment="TOP_CENTER" prefHeight="570.0" prefWidth="1200.0" spacing="50.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733d18.SquonksAPI.controller.ViewTicketsController">
+<VBox alignment="TOP_CENTER" prefHeight="570.0" prefWidth="1200.0" spacing="50.0" style="-fx-background-color: #dddfd4" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.wpi.cs3733d18.SquonksAPI.controller.ViewTicketsController">
     <children>
         <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 23;" text="%pending_ticket" />
         <TableView fx:id="log_table" maxHeight="-Infinity" maxWidth="-Infinity" onMouseClicked="#onTicketChoose" prefHeight="430.0" prefWidth="1091.0">
@@ -26,9 +26,17 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             </rowConstraints>
             <children>
-                <JFXButton fx:id="pathfind_btn" buttonType="RAISED" onMouseClicked="#onPathfindClick" style="-fx-background-color: #ffffff; -fx-font-size: 18;" text="%pathfind_to_ticket" GridPane.halignment="LEFT" />
+                <JFXButton fx:id="pathfind_btn" buttonType="RAISED" onMouseClicked="#onPathfindClick" style="-fx-background-color: #ffffff; -fx-font-size: 18;" text="%pathfind_to_ticket" GridPane.halignment="LEFT">
+                <GridPane.margin>
+                    <Insets left="40.0" />
+                </GridPane.margin>
+                </JFXButton>
                 <JFXButton fx:id="resolve_ticket_btn" buttonType="RAISED" onMouseClicked="#onResolveClick" style="-fx-font-size: 18; -fx-background-color: #ffffff;" text="%resolve_ticket" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
-                <JFXButton fx:id="undo" buttonType="RAISED" onMouseClicked="#onUndoClick" style="-fx-background-color: #ffffff; -fx-font-size: 18;" text="%undo" GridPane.columnIndex="2" GridPane.halignment="RIGHT" />
+                <JFXButton fx:id="undo" buttonType="RAISED" onMouseClicked="#onUndoClick" style="-fx-background-color: #ffffff; -fx-font-size: 18;" text="%undo" GridPane.columnIndex="2" GridPane.halignment="RIGHT">
+                <GridPane.margin>
+                    <Insets right="40.0" />
+                </GridPane.margin>
+                </JFXButton>
             </children>
         </GridPane>
     </children>

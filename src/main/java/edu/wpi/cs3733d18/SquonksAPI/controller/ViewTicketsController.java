@@ -9,6 +9,9 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import org.joda.time.DateTime;
+
+import java.util.Stack;
 
 public class ViewTicketsController {
 
@@ -22,7 +25,7 @@ public class ViewTicketsController {
     private Button resolve_ticket_btn;
 
     private Ticket selected_ticket;
-    private Ticket most_recent_ticket;
+    private static Stack<Ticket> most_recent_tickets = new Stack<>();
     private ServiceHomeController parent;
 
     /**
@@ -90,8 +93,9 @@ public class ViewTicketsController {
     @FXML
     void onResolveClick() {
         if (selected_ticket != null) {
-            most_recent_ticket = selected_ticket;
+            most_recent_tickets.push(selected_ticket);
             selected_ticket.setIsFulfilled(true);
+            selected_ticket.setFulfillDate(DateTime.now());
             Storage.getInstance().updateTicket(selected_ticket);
             populateTable();
         } else {
@@ -105,16 +109,31 @@ public class ViewTicketsController {
 
     @FXML
     void onPathfindClick() {
-        // empty for now
+        if (selected_ticket != null) {
+            SquonksAPI.dest_node_id = selected_ticket.getLocation().getNodeID();
+            SquonksAPI.string_func.accept(SquonksAPI.dest_node_id);
+        } else {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("No Ticket Selected");
+            alert.setHeaderText("No Ticket Selected");
+            alert.setContentText("No ticket was selected.");
+            alert.showAndWait();
+        }
     }
 
     @FXML
     void onUndoClick() {
-        if (most_recent_ticket != null) {
-            most_recent_ticket.setIsFulfilled(false);
-            Storage.getInstance().updateTicket(most_recent_ticket);
+        if (!most_recent_tickets.empty()) {
+            Ticket t = most_recent_tickets.pop();
+            t.setIsFulfilled(false);
+            Storage.getInstance().updateTicket(t);
             populateTable();
-            most_recent_ticket = null;
+        } else {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Nothing to Undo");
+            alert.setHeaderText("Nothing to Undo");
+            alert.setContentText("There is no action to undo.");
+            alert.showAndWait();
         }
     }
 

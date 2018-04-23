@@ -9,15 +9,19 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.function.Consumer;
 
 public class SquonksAPI {
 
     public static Stage primary_stage;
+    public static String dest_node_id;
+    public static Consumer<String> string_func;
 
     public SquonksAPI() {}
 
-    public void initialize(int x_coord, int y_coord, int window_width, int window_length, Stage new_primary_stage) throws IOException {
-        primary_stage = new_primary_stage;
+    public void initialize(Consumer<String> pathfind_func) throws IOException {
+        string_func = pathfind_func;
+        primary_stage = new Stage();
         AllText.changeLanguage("en");
 
         // set database and storage class
@@ -32,9 +36,9 @@ public class SquonksAPI {
         primary_stage.show();
     }
 
-    public void run(int x_coord, int y_coord, int window_width, int window_length, String dest_node_id, String origin_node, Stage primary_stage) {
+    public void run(Consumer<String> pathfind_func) {
         try {
-            this.initialize(x_coord, y_coord, window_width, window_length, primary_stage);
+            this.initialize(pathfind_func);
         } catch (IOException e) {
             e.printStackTrace();
         }

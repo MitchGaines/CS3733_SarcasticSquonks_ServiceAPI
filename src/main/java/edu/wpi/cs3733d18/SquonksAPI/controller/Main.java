@@ -23,6 +23,6 @@ public class Main extends Application {
     @Override
     public void start(Stage new_primary_stage) throws Exception {
         SquonksAPI squonksAPI = new SquonksAPI();
-        squonksAPI.run(100, 30, 900, 600, null, null, new_primary_stage);
+        squonksAPI.run( null);
     }
 }
