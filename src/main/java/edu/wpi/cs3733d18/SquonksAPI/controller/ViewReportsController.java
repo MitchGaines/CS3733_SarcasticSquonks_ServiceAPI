@@ -72,7 +72,7 @@ public class ViewReportsController extends ServiceHomeController {
 
     private void setUpListView() {
         user_list.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-        user_list.getItems().addAll(Storage.getInstance().getAllUsers());
+        user_list.getItems().addAll(Storage.getInstance().getAllITUsers());
     }
 
     private DateTime javaToJoda(java.time.LocalDateTime java_time) {
@@ -158,7 +158,6 @@ public class ViewReportsController extends ServiceHomeController {
 
         for (int i = 0; i < data_list.size(); i++) {
             data_list.get(i).getNode().getStyleClass().add("default-color" + (1 + (i % 7)));
-            //data_list.get(i).getNode().getStyleClass().add("default-color" + (i % 7));
         }
 
         chart.setLegendVisible(false);

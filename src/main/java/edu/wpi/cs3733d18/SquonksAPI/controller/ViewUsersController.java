@@ -198,7 +198,7 @@ public class ViewUsersController {
     public void initialize() {
         populateUserTable();
         ObservableList<User.user_type> types_list = FXCollections.observableArrayList();
-        types_list.addAll(User.user_type.ADMIN_STAFF, User.user_type.DOCTOR, User.user_type.REGULAR_STAFF);
+        types_list.addAll(User.user_type.ADMIN_STAFF, User.user_type.DOCTOR, User.user_type.REGULAR_STAFF, User.user_type.IT_STAFF);
         type_user.setItems(types_list);
 
         add_user_box.setVisible(true);

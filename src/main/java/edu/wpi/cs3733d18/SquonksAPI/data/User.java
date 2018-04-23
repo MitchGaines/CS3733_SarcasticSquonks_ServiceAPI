@@ -77,7 +77,7 @@ public class User {
         User u1 = new User("doctor", "doctor", "Doctor", "Danny", "Doctor Danny", User.user_type.DOCTOR, false);
         User u2 = new User("admin", "admin", "Admin", "Adam", "Admin Adam", User.user_type.ADMIN_STAFF, true);
         User u3 = new User("staff", "staff", "Stella", "Staff", "Stella Staff", User.user_type.REGULAR_STAFF, false);
-        User u4 = new User("techtom", "tech", "Techie", "Tom", "Techie Tom", user_type.REGULAR_STAFF, false);
+        User u4 = new User("techtom", "tech", "Techie", "Tom", "Techie Tom", user_type.IT_STAFF, false);
 
         // save users to database
         storage.saveUser(u1);
@@ -207,13 +207,15 @@ public class User {
         return result;
     }
 
-    public enum user_type {DOCTOR, ADMIN_STAFF, REGULAR_STAFF}
+    public enum user_type {DOCTOR, ADMIN_STAFF, REGULAR_STAFF, IT_STAFF}
 
     ///////////////////// Fancy Reports ///////////////////////
 
     private Stream<Ticket> requestedInRange(DateTime start, DateTime end) {
         return Storage.getInstance().getAllTickets().stream()
-                .filter(e -> e.getRequestDate().toDateTime().isBefore(end.toDateTime().toInstant()) && e.getRequestDate().toDateTime().isAfter(start.toDateTime()) /*&& canFulfill(e)*/);
+                .filter(e -> e.getRequestDate().toDateTime().isBefore(end.toDateTime().toInstant()) &&
+                        e.getRequestDate().toDateTime().isAfter(start.toDateTime()) &&
+                        Storage.getInstance().getUserByName(e.getFulfillerName()).getType() == user_type.IT_STAFF);
     }
 
     public long getNumFulfillableRequests(DateTime start, DateTime end) {
@@ -222,13 +224,15 @@ public class User {
 
     public long getNumFulfilledRequests(DateTime start, DateTime end) {
         return Storage.getInstance().getAllTickets().stream()
-                .filter(e -> /*e.isFulfilled() &&*/ e.getFulfillDate().toDateTime().isBefore(end.toDateTime().toInstant()) && e.getFulfillDate().toDateTime().isAfter(start.toDateTime()) /*&& e.getFulfiller().getUserID() == user_id*/)
+                .filter(e -> e.isFulfilled() && e.getFulfillDate().toDateTime().isBefore(end.toDateTime().toInstant())
+                        && e.getFulfillDate().toDateTime().isAfter(start.toDateTime())
+                        /*&& e.getFulfiller().getUserID() == user_id*/)
                 .count();
     }
 
     public double getAverageFulfillmentTimeInHours(DateTime start, DateTime end) {
         return requestedInRange(start, end)
-                /*.filter(Ticket::isFulfilled)*/
+                .filter(Ticket::isFulfilled)
                 .mapToDouble(e -> ((double) (e.getFulfillDate().getMillis() - e.getRequestDate().getMillis())) / DateTimeConstants.MILLIS_PER_HOUR)
                 .average()
                 .orElse(0);
